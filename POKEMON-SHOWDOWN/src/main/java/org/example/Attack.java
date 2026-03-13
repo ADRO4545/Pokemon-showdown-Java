@@ -16,8 +16,20 @@ public class Attack {
 
     public void attack(Pokemon pokemonAttack, Pokemon pokemonDefend) {
         Random random = new Random();
+
+        int attackStat;
+        int defenseStat;
+
+        if (this.category.equals("Special")) {
+            attackStat = pokemonAttack.getSpecialAttack();
+            defenseStat = pokemonDefend.getSpecialDefense();
+        } else {
+            attackStat = pokemonAttack.getClassicAttack();
+            defenseStat = pokemonDefend.getClassicDefense();
+        }
+
         pokemonDefend.setHp((int) (pokemonDefend.getHp()
-                - this.power * ((double) pokemonAttack.getClassicAttack() / pokemonDefend.getClassicDefense())
+                - this.power * ((double) attackStat / defenseStat)
                         * (random.nextInt(85, 100) / 100.0)));
     }
 
