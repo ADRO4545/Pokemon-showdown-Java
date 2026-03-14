@@ -54,7 +54,8 @@ public class Controller {
 
     }
 
-    public static HashMap<String, Attack> findAllAttacks(HashMap<String, Type> allTypes,HashMap<String, Pokemon> allPokemon) {
+    public static HashMap<String, Attack> findAllAttacks(HashMap<String, Type> allTypes,
+                                                         HashMap<String, Pokemon> allPokemon) {
         HashMap<String, Attack> allAttacks = new HashMap<>();
         try (Connection connection = Controller.connect();
              PreparedStatement statement =
@@ -69,12 +70,13 @@ public class Controller {
                 String typeAttack = set.getString("type");
 
                 if (!allAttacks.containsKey(nameAttack)) {
-                    allAttacks.put(nameAttack, new Attack(nameAttack, power, category,allTypes.get(typeAttack)));
+                    allAttacks.put(nameAttack, new Attack(nameAttack, power,
+                            category, allTypes.get(typeAttack)));
                 }
 
                 Attack a = allAttacks.get(nameAttack);
 
-                Pokemon p=allPokemon.get(namePokemon);
+                Pokemon p = allPokemon.get(namePokemon);
                 p.addListAttacks(a);
 
 
