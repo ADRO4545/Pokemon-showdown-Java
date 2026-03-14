@@ -54,6 +54,40 @@ public class Controller {
 
     }
 
+    public static HashMap<String, Pokemon> findAllPokemon(HashMap<String, Type> allTypes) {
+        HashMap<String, Pokemon> allPokemon = new HashMap<>();
+        try (Connection connection = Controller.connect();
+             PreparedStatement statement =
+                     connection.prepareStatement("SELECT * FROM pokemon");
+             ResultSet set = statement.executeQuery()) {
+
+            while (set.next()) {
+                String namePokemon = set.getString("name");
+                double hp = set.getDouble("hp");
+                int speed = set.getInt("speed");
+                int specialAttack = set.getInt("specialAttack");
+                int classicAttack = set.getInt("classicAttack");
+                int specialDefense = set.getInt("specialDefense");
+                int classicDefense = set.getInt("classicDefense");
+                String type = set.getString("type");
+                String type2 = set.getString("type2");
+
+                if (!allPokemon.containsKey(namePokemon)) {
+                    allPokemon.put(namePokemon, new Pokemon(namePokemon, hp,
+                            speed, specialAttack, classicAttack, specialDefense,
+                            classicDefense, allTypes.get(type), allTypes.get(type2)));
+                }
+
+
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+
+        return allPokemon;
+    }
+
+
     public static HashMap<String, Attack> findAllAttacks(HashMap<String, Type> allTypes,
                                                          HashMap<String, Pokemon> allPokemon) {
         HashMap<String, Attack> allAttacks = new HashMap<>();

@@ -13,12 +13,13 @@ public class Pokemon {
     private int specialDefense;
     private int classicDefense;
 
-    private ArrayList<Attack> listAttacks=new ArrayList<>();
+    private ArrayList<Attack> listAttacks = new ArrayList<>();
 
     private Type type;
+    private Type type2;
 
-    public void addListAttacks(Attack a){
-        if(this.listAttacks.size()<4){
+    public void addListAttacks(Attack a) {
+        if (this.listAttacks.size() < 4) {
             this.listAttacks.add(a);
         }
     }
@@ -30,8 +31,24 @@ public class Pokemon {
                    int classicAttack,
                    int specialDefense,
                    int classicDefense,
-                   Type  type
+                   Type type,
+                   Type type2
     ) {
+        this.name = name;
+        this.hp = hp;
+        this.speed = speed;
+        this.specialAttack = specialAttack;
+        this.classicAttack = classicAttack;
+        this.specialDefense = specialDefense;
+        this.classicDefense = classicDefense;
+        this.type = type;
+        this.type2 = type2;
+    }
+
+    public Pokemon(String name, double hp, int speed, int specialAttack,
+                   int classicAttack, int specialDefense,
+                   int classicDefense, Type type) {
+
         this.name = name;
         this.hp = hp;
         this.speed = speed;
@@ -72,7 +89,11 @@ public class Pokemon {
     }
 
     public Type getType() {
-    return type;
+        return type;
+    }
+
+    public Type getType2() {
+        return type2;
     }
 
     // Setters
@@ -104,9 +125,14 @@ public class Pokemon {
         this.classicDefense = classicDefense;
     }
 
-    // public void setType(Type type) {
-    // this.type = type;
-    // }
+    public void setType(Type type) {
+        this.type = type;
+    }
+
+    public void setType2(Type type2) {
+        this.type2 = type2;
+    }
+
 
     public String toString() {
         return "Pokemon [name=" + name +
