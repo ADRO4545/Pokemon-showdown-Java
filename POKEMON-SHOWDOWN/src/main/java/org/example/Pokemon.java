@@ -13,7 +13,9 @@ public class Pokemon {
 
     private Type type;
 
-    // private Type type;
+
+
+
 
     public Pokemon(String name,
                    double hp,

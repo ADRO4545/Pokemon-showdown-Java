@@ -37,10 +37,10 @@ public class Attack {
         return tableValue;
     }
 
-    public double calculateDamage(Pokemon pokemonAttack, Pokemon pokemonDefend, HashMap<String, HashMap<String, Double>> typeCombination) {
+    public double calculateDamage(Pokemon pokemonAttack, Pokemon pokemonDefend, HashMap<String, Type> allTypes) {
 
         Random random = new Random();
-        double coefficient=type.findCoefType(pokemonDefend, typeCombination);
+        double coefficient=type.getCoef(pokemonDefend.getType());
         double damage;
         int[] tableValue=setupCombatStats(pokemonAttack,pokemonDefend);
         damage=this.power * ((double) tableValue[0] / tableValue[1])* coefficient
@@ -49,10 +49,10 @@ public class Attack {
         return damage;
     }
 
-    public void receiveDamage(Pokemon pokemonAttack, Pokemon pokemonDefend, HashMap<String, HashMap<String, Double>> typeCombination){
+    public void receiveDamage(Pokemon pokemonAttack, Pokemon pokemonDefend, HashMap<String, Type> allTypes){
 
         pokemonDefend.setHp(pokemonDefend.getHp()-
-                calculateDamage(pokemonAttack, pokemonDefend, typeCombination));
+                calculateDamage(pokemonAttack, pokemonDefend, allTypes));
     }
 
 }
