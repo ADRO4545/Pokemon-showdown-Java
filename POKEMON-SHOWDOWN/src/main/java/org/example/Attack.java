@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.HashMap;
 import java.util.Random;
 
 public class Attack {
@@ -7,18 +8,20 @@ public class Attack {
     // private Type type;
     private int power;
     private String category;
+    private Type type;
 
-    public Attack(String name, int power, String category) {
+    public Attack(String name, int power, String category, Type type) {
         this.name = name;
         this.power = power;
         this.category = category;
+        this.type = type;
     }
 
     public int[] setupCombatStats (Pokemon pokemonAttack, Pokemon pokemonDefend){
         int attackStat;
         int defenseStat;
 
-        if (this.category.equals("special")) {
+        if (this.category.equals("speciale")) {
 
             attackStat = pokemonAttack.getSpecialAttack();
             defenseStat = pokemonDefend.getSpecialDefense();
@@ -34,21 +37,22 @@ public class Attack {
         return tableValue;
     }
 
-    public double calculateDamage(Pokemon pokemonAttack, Pokemon pokemonDefend) {
+    public double calculateDamage(Pokemon pokemonAttack, Pokemon pokemonDefend, HashMap<String, HashMap<String, Double>> typeCombination) {
 
         Random random = new Random();
+        double coefficient=type.findCoefType(pokemonDefend, typeCombination);
         double damage;
         int[] tableValue=setupCombatStats(pokemonAttack,pokemonDefend);
-        damage=this.power * ((double) tableValue[0] / tableValue[1])
-                        * (random.nextInt(85, 100) / 100.0);
+        damage=this.power * ((double) tableValue[0] / tableValue[1])* coefficient
+                        /*(random.nextInt(85, 100) / 100.0)*/;
 
         return damage;
     }
 
-    public void receiveDamage(Pokemon pokemonAttack, Pokemon pokemonDefend){
+    public void receiveDamage(Pokemon pokemonAttack, Pokemon pokemonDefend, HashMap<String, HashMap<String, Double>> typeCombination){
 
         pokemonDefend.setHp(pokemonDefend.getHp()-
-                calculateDamage(pokemonAttack, pokemonDefend));
+                calculateDamage(pokemonAttack, pokemonDefend, typeCombination));
     }
 
 }

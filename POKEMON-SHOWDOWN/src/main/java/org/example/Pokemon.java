@@ -10,6 +10,7 @@ public class Pokemon {
 
     private int specialDefense;
     private int classicDefense;
+
     private Type type;
 
     // private Type type;
@@ -21,7 +22,7 @@ public class Pokemon {
                    int classicAttack,
                    int specialDefense,
                    int classicDefense,
-                   String type
+                   Type  type
     ) {
         this.name = name;
         this.hp = hp;
@@ -30,7 +31,7 @@ public class Pokemon {
         this.classicAttack = classicAttack;
         this.specialDefense = specialDefense;
         this.classicDefense = classicDefense;
-        this.type = new Type(type);
+        this.type = type;
     }
 
     // Getters
@@ -62,9 +63,9 @@ public class Pokemon {
         return classicDefense;
     }
 
-    // public Type getType() {
-    // return type;
-    // }
+    public Type getType() {
+    return type;
+    }
 
     // Setters
     public void setName(String name) {
@@ -106,7 +107,8 @@ public class Pokemon {
                 ", specialAttack=" + specialAttack +
                 ", classicAttack=" + classicAttack +
                 ", specialDefense=" + specialDefense +
-                ", classicDefense=" + classicDefense + "]";
+                ", classicDefense=" + classicDefense +
+                ", type=" + type.getName() + "]";
     }
 }
 
