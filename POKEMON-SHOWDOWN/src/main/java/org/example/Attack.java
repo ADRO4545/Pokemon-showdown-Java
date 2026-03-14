@@ -14,23 +14,41 @@ public class Attack {
         this.category = category;
     }
 
-    public void attack(Pokemon pokemonAttack, Pokemon pokemonDefend) {
-        Random random = new Random();
-
+    public int[] setupCombatStats (Pokemon pokemonAttack, Pokemon pokemonDefend){
         int attackStat;
         int defenseStat;
 
-        if (this.category.equals("Special")) {
+        if (this.category.equals("special")) {
+
             attackStat = pokemonAttack.getSpecialAttack();
             defenseStat = pokemonDefend.getSpecialDefense();
+
+
         } else {
             attackStat = pokemonAttack.getClassicAttack();
             defenseStat = pokemonDefend.getClassicDefense();
         }
 
-        pokemonDefend.setHp((int) (pokemonDefend.getHp()
-                - this.power * ((double) attackStat / defenseStat)
-                        * (random.nextInt(85, 100) / 100.0)));
+        int[] tableValue={attackStat, defenseStat};
+
+        return tableValue;
+    }
+
+    public double calculateDamage(Pokemon pokemonAttack, Pokemon pokemonDefend) {
+
+        Random random = new Random();
+        double damage;
+        int[] tableValue=setupCombatStats(pokemonAttack,pokemonDefend);
+        damage=this.power * ((double) tableValue[0] / tableValue[1])
+                        * (random.nextInt(85, 100) / 100.0);
+
+        return damage;
+    }
+
+    public void receiveDamage(Pokemon pokemonAttack, Pokemon pokemonDefend){
+
+        pokemonDefend.setHp(pokemonDefend.getHp()-
+                calculateDamage(pokemonAttack, pokemonDefend));
     }
 
 }

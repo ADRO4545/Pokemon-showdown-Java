@@ -2,7 +2,7 @@ package org.example;
 
 public class Pokemon {
     private String name;
-    private int hp;
+    private double hp;
     private int speed;
 
     private int specialAttack;
@@ -10,17 +10,18 @@ public class Pokemon {
 
     private int specialDefense;
     private int classicDefense;
+    private Type type;
 
     // private Type type;
 
     public Pokemon(String name,
-            int hp,
-            int speed,
-            int specialAttack,
-            int classicAttack,
-            int specialDefense,
-            int classicDefense
-    // Type type
+                   double hp,
+                   int speed,
+                   int specialAttack,
+                   int classicAttack,
+                   int specialDefense,
+                   int classicDefense,
+                   String type
     ) {
         this.name = name;
         this.hp = hp;
@@ -29,7 +30,7 @@ public class Pokemon {
         this.classicAttack = classicAttack;
         this.specialDefense = specialDefense;
         this.classicDefense = classicDefense;
-        // this.type = type;
+        this.type = new Type(type);
     }
 
     // Getters
@@ -37,7 +38,7 @@ public class Pokemon {
         return name;
     }
 
-    public int getHp() {
+    public double getHp() {
         return hp;
     }
 
@@ -70,7 +71,7 @@ public class Pokemon {
         this.name = name;
     }
 
-    public void setHp(int hp) {
+    public void setHp(double hp) {
         this.hp = hp;
     }
 
@@ -108,3 +109,5 @@ public class Pokemon {
                 ", classicDefense=" + classicDefense + "]";
     }
 }
+
+
