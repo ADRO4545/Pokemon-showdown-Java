@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.ArrayList;
+
 public class Pokemon {
     private String name;
     private double hp;
@@ -11,11 +13,15 @@ public class Pokemon {
     private int specialDefense;
     private int classicDefense;
 
+    private ArrayList<Attack> listAttacks=new ArrayList<>();
+
     private Type type;
 
-
-
-
+    public void addListAttacks(Attack a){
+        if(this.listAttacks.size()<4){
+            this.listAttacks.add(a);
+        }
+    }
 
     public Pokemon(String name,
                    double hp,

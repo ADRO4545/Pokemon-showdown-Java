@@ -40,9 +40,9 @@ public class Controller {
                     allTypes.put(typeAttacker, new Type(typeAttacker));
                 }
 
-                Type t=allTypes.get(typeAttacker);
+                Type t = allTypes.get(typeAttacker);
 
-                t.addEfficiency(typeDefender,coef);
+                t.addEfficiency(typeDefender, coef);
             }
 
 
@@ -54,28 +54,39 @@ public class Controller {
 
     }
 
-    /*public static HashMap<String, HashMap<String, HashMap<String, Object>>> findAllAttacks() {
-
-        try(Connection connection = Controller.connect();
-            PreparedStatement statement =
-                    connection.prepareStatement("SELECT * FROM attaques");
-            ResultSet set = statement.executeQuery()){
+    public static HashMap<String, Attack> findAllAttacks(HashMap<String, Type> allTypes,HashMap<String, Pokemon> allPokemon) {
+        HashMap<String, Attack> allAttacks = new HashMap<>();
+        try (Connection connection = Controller.connect();
+             PreparedStatement statement =
+                     connection.prepareStatement("SELECT * FROM attaques");
+             ResultSet set = statement.executeQuery()) {
 
             while (set.next()) {
                 String namePokemon = set.getString("name_pokemon");
                 String nameAttack = set.getString("name_attack");
-                String power =
+                int power = set.getInt("power");
+                String category = set.getString("category");
+                String typeAttack = set.getString("type");
+
+                if (!allAttacks.containsKey(nameAttack)) {
+                    allAttacks.put(nameAttack, new Attack(nameAttack, power, category,allTypes.get(typeAttack)));
+                }
+
+                Attack a = allAttacks.get(nameAttack);
+
+                Pokemon p=allPokemon.get(namePokemon);
+                p.addListAttacks(a);
+
+
             }
-
-
-        }
-
-
-        catch(SQLException e){
+        } catch (SQLException e) {
             System.out.println(e);
         }
 
-        return*/
+        return allAttacks;
 
+    }
 }
+
+
 

@@ -5,10 +5,10 @@ import java.util.Random;
 
 public class Attack {
     private String name;
-    // private Type type;
     private int power;
     private String category;
     private Type type;
+
 
     public Attack(String name, int power, String category, Type type) {
         this.name = name;
@@ -54,5 +54,6 @@ public class Attack {
         pokemonDefend.setHp(pokemonDefend.getHp()-
                 calculateDamage(pokemonAttack, pokemonDefend, allTypes));
     }
+
 
 }
