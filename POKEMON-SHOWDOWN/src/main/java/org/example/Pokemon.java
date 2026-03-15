@@ -5,18 +5,21 @@ import java.util.ArrayList;
 public class Pokemon {
     private String name;
     private double hp;
+    private int maxHp;
     private int speed;
 
     private int specialAttack;
     private int classicAttack;
 
     private int specialDefense;
+    private int specialDefenseMax;
     private int classicDefense;
-
+    int classicDefenseMax;
     private ArrayList<Attack> listAttacks = new ArrayList<>();
 
     private Type type;
     private Type type2;
+    private Status status;
 
     public void addListAttacks(Attack a) {
         if (this.listAttacks.size() < 4) {
@@ -26,37 +29,51 @@ public class Pokemon {
 
     public Pokemon(String name,
                    double hp,
+                   int maxHp,
                    int speed,
                    int specialAttack,
                    int classicAttack,
                    int specialDefense,
+                   int specialDefenseMax,
                    int classicDefense,
+                   int classicDefenseMax,
                    Type type,
-                   Type type2
+                   Type type2,
+                   Status status
     ) {
         this.name = name;
         this.hp = hp;
+        this.maxHp = maxHp;
         this.speed = speed;
         this.specialAttack = specialAttack;
         this.classicAttack = classicAttack;
         this.specialDefense = specialDefense;
+        this.specialDefenseMax = specialDefenseMax;
         this.classicDefense = classicDefense;
+        this.classicDefenseMax = classicDefenseMax;
         this.type = type;
         this.type2 = type2;
+        this.status = status;
     }
 
-    public Pokemon(String name, double hp, int speed, int specialAttack,
+    public Pokemon(String name, double hp, int maxHp, int speed, int specialAttack,
                    int classicAttack, int specialDefense,
-                   int classicDefense, Type type) {
+                   int specialDefenseMax,
+                   int classicDefense,
+                   int classicDefenseMax, Type type,Status status) {
 
         this.name = name;
         this.hp = hp;
+        this.maxHp = maxHp;
         this.speed = speed;
         this.specialAttack = specialAttack;
         this.classicAttack = classicAttack;
         this.specialDefense = specialDefense;
+        this.specialDefenseMax = specialDefenseMax;
         this.classicDefense = classicDefense;
+        this.classicDefenseMax = classicDefenseMax;
         this.type = type;
+        this.status = status;
     }
 
     // Getters
@@ -66,6 +83,10 @@ public class Pokemon {
 
     public double getHp() {
         return hp;
+    }
+
+    public double getMaxHp() {
+        return maxHp;
     }
 
     public int getSpeed() {
@@ -84,8 +105,16 @@ public class Pokemon {
         return specialDefense;
     }
 
+    public int getSpecialDefenseMax() {
+        return specialDefenseMax;
+    }
+
     public int getClassicDefense() {
         return classicDefense;
+    }
+
+    public int getClassicDefenseMax() {
+        return classicDefenseMax;
     }
 
     public Type getType() {
@@ -131,6 +160,10 @@ public class Pokemon {
 
     public void setType2(Type type2) {
         this.type2 = type2;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
 

@@ -20,6 +20,12 @@ public class Controller {
         return DriverManager.getConnection(DB_URL, USER, PASS);
     }
 
+    public static HashMap<String, Status> findAllSatus() {
+
+    }
+
+
+
     public static HashMap<String, Type> findAllCoefType() {
         HashMap<String, Type> allTypes = new HashMap<>();
 
@@ -64,6 +70,7 @@ public class Controller {
             while (set.next()) {
                 String namePokemon = set.getString("name");
                 double hp = set.getDouble("hp");
+                int maxHp = set.getInt("maxHp");
                 int speed = set.getInt("speed");
                 int specialAttack = set.getInt("specialAttack");
                 int classicAttack = set.getInt("classicAttack");
@@ -73,9 +80,9 @@ public class Controller {
                 String type2 = set.getString("type2");
 
                 if (!allPokemon.containsKey(namePokemon)) {
-                    allPokemon.put(namePokemon, new Pokemon(namePokemon, hp,
-                            speed, specialAttack, classicAttack, specialDefense,
-                            classicDefense, allTypes.get(type), allTypes.get(type2)));
+                    allPokemon.put(namePokemon, new Pokemon(namePokemon, hp,maxHp,
+                            speed, specialAttack, classicAttack, specialDefense, specialDefense,
+                            classicDefense, classicDefense, allTypes.get(type), allTypes.get(type2),allStatus.get(newStatus)));
                 }
 
 
@@ -93,7 +100,8 @@ public class Controller {
         HashMap<String, Attack> allAttacks = new HashMap<>();
         try (Connection connection = Controller.connect();
              PreparedStatement statement =
-                     connection.prepareStatement("SELECT * FROM attaques");
+                     connection.prepareStatement("SELECT * FROM attaques " +
+                             "LEFT JOIN effets ON attaques.effets_id = effets.id ");
              ResultSet set = statement.executeQuery()) {
 
             while (set.next()) {
@@ -102,10 +110,38 @@ public class Controller {
                 int power = set.getInt("power");
                 String category = set.getString("category");
                 String typeAttack = set.getString("type");
+                String influencedVariable = set.getString("influenced_variable");
+                int proba = set.getInt("probability");
+                double coef = set.getDouble("coefficient");
+                String newStatus = set.getString("newStatus");
 
                 if (!allAttacks.containsKey(nameAttack)) {
-                    allAttacks.put(nameAttack, new Attack(nameAttack, power,
-                            category, allTypes.get(typeAttack)));
+                    Attack nouvelleAttaque;
+
+                    if (influencedVariable == null) {
+                        nouvelleAttaque = new Attack(nameAttack, power, category, allTypes.get(typeAttack));
+                    }
+                    else if (influencedVariable.equals("hpwinattacker")) {
+
+                        nouvelleAttaque = new HpWinAttacker(nameAttack, power, category,
+                                allTypes.get(typeAttack), proba, allStatus.get(newStatus));
+                    }
+
+                    else if (influencedVariable.equals("hpdamageattacker")) {
+
+                        nouvelleAttaque = new HpDamageAttacker(nameAttack, power, category,
+                                allTypes.get(typeAttack), proba, allStatus.get(newStatus));
+                    }
+                    else if (influencedVariable.equals("status")) {
+
+                        nouvelleAttaque = new StatusChange(nameAttack, power, category,
+                                allTypes.get(typeAttack), proba, coef);
+                    }
+                    else if (influencedVariable.equals("classicDefense")) {
+
+                        nouvelleAttaque = new classicDefenseInfluence(nameAttack, power, category,
+                                allTypes.get(typeAttack), proba, coef);
+                    }
                 }
 
                 Attack a = allAttacks.get(nameAttack);

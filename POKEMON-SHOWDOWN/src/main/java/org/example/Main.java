@@ -14,6 +14,8 @@ public class Main {
         electric.receiveDamage(pikachu,squirtle,allTypes);
         System.out.println(squirtle.getHp());
 
+        Attack a=new HpInfluence();
+
 
 
 
