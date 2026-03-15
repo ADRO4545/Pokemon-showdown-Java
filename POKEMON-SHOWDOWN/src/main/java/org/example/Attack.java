@@ -5,10 +5,10 @@ import java.util.Random;
 
 public class Attack {
     private String name;
-    // private Type type;
     private int power;
     private String category;
     private Type type;
+
 
     public Attack(String name, int power, String category, Type type) {
         this.name = name;
@@ -37,22 +37,33 @@ public class Attack {
         return tableValue;
     }
 
-    public double calculateDamage(Pokemon pokemonAttack, Pokemon pokemonDefend, HashMap<String, HashMap<String, Double>> typeCombination) {
+    public double calculateDamage(Pokemon pokemonAttack, Pokemon pokemonDefend) {
 
         Random random = new Random();
-        double coefficient=type.findCoefType(pokemonDefend, typeCombination);
+        double coefficient=type.getCoef(pokemonDefend.getType());
         double damage;
         int[] tableValue=setupCombatStats(pokemonAttack,pokemonDefend);
-        damage=this.power * ((double) tableValue[0] / tableValue[1])* coefficient
-                        /*(random.nextInt(85, 100) / 100.0)*/;
+        damage=this.power * ((double) tableValue[0] / tableValue[1])* coefficient*
+                        (random.nextInt(85, 100) / 100.0)+ pokemonDefend.getMaxHp()*(pokemonDefend.getState().getcoef());
 
         return damage;
     }
 
-    public void receiveDamage(Pokemon pokemonAttack, Pokemon pokemonDefend, HashMap<String, HashMap<String, Double>> typeCombination){
+    public void receiveDamage(Pokemon pokemonAttack, Pokemon pokemonDefend){
 
         pokemonDefend.setHp(pokemonDefend.getHp()-
-                calculateDamage(pokemonAttack, pokemonDefend, typeCombination));
+                calculateDamage(pokemonAttack, pokemonDefend));
+
+
     }
+
+
+
+
+
+
+
+
+
 
 }

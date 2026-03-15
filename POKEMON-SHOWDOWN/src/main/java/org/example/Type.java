@@ -2,20 +2,30 @@ package org.example;
 
 import java.util.HashMap;
 
-public class Type{
-private String name;
+public class Type {
+    private String name;
+    private HashMap<String, Double> efficiencies = new HashMap<>();
 
-public Type(String name){
-    this.name=name;
-}
 
-public String getName(){
-    return this.name;
-}
-
-public double findCoefType(Pokemon defender, HashMap<String, HashMap<String, Double>> typeCombination){
-    String typeDefender=defender.getType().getName();
-    return typeCombination.get(this.name).get(typeDefender);
+    public Type(String name) {
+        this.name = name;
     }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void addEfficiency(String defenderTypeName, Double coef){
+        efficiencies.put(defenderTypeName,coef);
+    }
+
+    public double getCoef(Type defender){
+        return this.efficiencies.get(defender.getName());
+    }
+
+
+
+
+
 
 }
