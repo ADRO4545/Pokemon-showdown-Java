@@ -1,5 +1,7 @@
 package org.example;
 
+import org.example.status.Statut;
+
 public class Pokemon {
     private String name;
     private double hp;
@@ -12,6 +14,7 @@ public class Pokemon {
     private int classicDefense;
 
     private Type type;
+    private Statut statut; // null = pas de statut
 
     // private Type type;
 
@@ -64,7 +67,15 @@ public class Pokemon {
     }
 
     public Type getType() {
-    return type;
+        return type;
+    }
+
+    public Statut getStatut() {
+        return statut;
+    }
+
+    public void setStatut(Statut statut) {
+        this.statut = statut;
     }
 
     // Setters
