@@ -19,8 +19,9 @@ public class Pokemon {
     private ArrayList<Attack> listAttacks = new ArrayList<>();
 
     private Type type;
-    private Statut statut; // null = pas de statut
     private Type type2;
+    private Statut statut; // null = pas de statut
+    private Status status;
 
     public void addListAttacks(Attack a) {
         if (this.listAttacks.size() < 4) {
@@ -61,7 +62,7 @@ public class Pokemon {
                    int classicAttack, int specialDefense,
                    int specialDefenseMax,
                    int classicDefense,
-                   int classicDefenseMax, Type type,Status status) {
+                   int classicDefenseMax, Type type, Status status) {
 
         this.name = name;
         this.hp = hp;
@@ -122,14 +123,20 @@ public class Pokemon {
         return type;
     }
 
+    public Type getType2() {
+        return type2;
+    }
+
     public Statut getStatut() {
         return statut;
     }
 
     public void setStatut(Statut statut) {
         this.statut = statut;
-    public Type getType2() {
-        return type2;
+    }
+
+    public Status getStatus() {
+        return status;
     }
 
     // Setters
@@ -173,6 +180,9 @@ public class Pokemon {
         this.status = status;
     }
 
+    public ArrayList<Attack> getListAttacks() {
+        return listAttacks;
+    }
 
     public String toString() {
         return "Pokemon [name=" + name +
@@ -182,8 +192,8 @@ public class Pokemon {
                 ", classicAttack=" + classicAttack +
                 ", specialDefense=" + specialDefense +
                 ", classicDefense=" + classicDefense +
-                ", type=" + type.getName() + "]";
+                ", type=" + type.getName() +
+                (type2 != null ? ", type2=" + type2.getName() : "") +
+                "]";
     }
 }
-
-

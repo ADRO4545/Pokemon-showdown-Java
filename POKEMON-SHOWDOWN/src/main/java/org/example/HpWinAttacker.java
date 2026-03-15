@@ -7,7 +7,7 @@ public class HpWinAttacker extends Attack {
 
 
     public HpWinAttacker(String name, int power, String category,
-                       Type type, String influencedVariable, int proba, double coef) {
+                       Type type, int proba, double coef) {
         super(name, power, category, type);
         this.proba = proba;
         this.coef = coef;
