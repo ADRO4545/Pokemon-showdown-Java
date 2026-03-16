@@ -9,5 +9,6 @@ public interface Statut {
     boolean canAttack(Pokemon pokemon);
 
     // Function to call each end of turn with pokemone on parameters
-    void applyEndOfTurn(Pokemon pokemon);
+    default void applyEndOfTurn(Pokemon pokemon) {
+    }
 }

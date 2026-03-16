@@ -12,9 +12,6 @@ public class Paralysie implements Statut {
         return Math.random() >= 0.25;
     }
 
-    public void applyEndOfTurn(Pokemon pokemon) {
-    }
-
     public int modifySpeed(int baseSpeed) {
         return baseSpeed / 2;
     }
