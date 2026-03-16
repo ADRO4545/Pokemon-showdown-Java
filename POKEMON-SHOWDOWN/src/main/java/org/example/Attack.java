@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class Attack {
     private String name;
-    private int power;
+    private double power;
     private String category;
     private Type type;
 
@@ -15,6 +15,18 @@ public class Attack {
         this.power = power;
         this.category = category;
         this.type = type;
+    }
+
+    public Type getType(){
+        return this.type;
+    }
+
+    public double getPower(){
+        return this.power;
+    }
+
+    public void setPower(double power){
+        this.power=power;
     }
 
     public int[] setupCombatStats (Pokemon pokemonAttack, Pokemon pokemonDefend){

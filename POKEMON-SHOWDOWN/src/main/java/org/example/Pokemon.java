@@ -20,6 +20,7 @@ public class Pokemon {
     private Type type;
     private Type type2;
     private Status status;
+    private Item item;
 
     public void addListAttacks(Attack a) {
         if (this.listAttacks.size() < 4) {
@@ -39,7 +40,8 @@ public class Pokemon {
                    int classicDefenseMax,
                    Type type,
                    Type type2,
-                   Status status
+                   Status status,
+                   Item item
     ) {
         this.name = name;
         this.hp = hp;
@@ -54,13 +56,14 @@ public class Pokemon {
         this.type = type;
         this.type2 = type2;
         this.status = status;
+        this.item = item;
     }
 
     public Pokemon(String name, double hp, int maxHp, int speed, int specialAttack,
                    int classicAttack, int specialDefense,
                    int specialDefenseMax,
                    int classicDefense,
-                   int classicDefenseMax, Type type,Status status) {
+                   int classicDefenseMax, Type type,Status status, Item item) {
 
         this.name = name;
         this.hp = hp;
@@ -74,6 +77,7 @@ public class Pokemon {
         this.classicDefenseMax = classicDefenseMax;
         this.type = type;
         this.status = status;
+        this.item = item;
     }
 
     // Getters
@@ -125,6 +129,15 @@ public class Pokemon {
         return type2;
     }
 
+    public Status getStatus() {
+        return status;
+    }
+
+    public Item getItem() {
+        return item;
+    }
+
+
     // Setters
     public void setName(String name) {
         this.name = name;
@@ -165,6 +178,12 @@ public class Pokemon {
     public void setStatus(Status status) {
         this.status = status;
     }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
+
+
 
 
     public String toString() {
