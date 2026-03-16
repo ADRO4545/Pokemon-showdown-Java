@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.status.Statut;
 import java.util.ArrayList;
 
 public class Pokemon {
@@ -19,6 +20,7 @@ public class Pokemon {
 
     private Type type;
     private Type type2;
+    private Statut statut; // null = pas de statut
     private Status status;
     private Item item;
 
@@ -137,6 +139,13 @@ public class Pokemon {
         return item;
     }
 
+    public Statut getStatut() {
+        return statut;
+    }
+
+    public void setStatut(Statut statut) {
+        this.statut = statut;
+    }
 
     // Setters
     public void setName(String name) {
@@ -185,6 +194,9 @@ public class Pokemon {
 
 
 
+    public ArrayList<Attack> getListAttacks() {
+        return listAttacks;
+    }
 
     public String toString() {
         return "Pokemon [name=" + name +
@@ -194,8 +206,8 @@ public class Pokemon {
                 ", classicAttack=" + classicAttack +
                 ", specialDefense=" + specialDefense +
                 ", classicDefense=" + classicDefense +
-                ", type=" + type.getName() + "]";
+                ", type=" + type.getName() +
+                (type2 != null ? ", type2=" + type2.getName() : "") +
+                "]";
     }
 }
-
-

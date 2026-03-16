@@ -27,9 +27,6 @@ public class classicDefenseInfluence extends Attack {
         }
 
     }
-
-
-    }
 }
 
 
