@@ -22,6 +22,7 @@ public class Pokemon {
     private Type type2;
     private Statut statut; // null = pas de statut
     private Status status;
+    private Item item;
 
     public void addListAttacks(Attack a) {
         if (this.listAttacks.size() < 4) {
@@ -41,7 +42,8 @@ public class Pokemon {
                    int classicDefenseMax,
                    Type type,
                    Type type2,
-                   Status status
+                   Status status,
+                   Item item
     ) {
         this.name = name;
         this.hp = hp;
@@ -56,13 +58,14 @@ public class Pokemon {
         this.type = type;
         this.type2 = type2;
         this.status = status;
+        this.item = item;
     }
 
     public Pokemon(String name, double hp, int maxHp, int speed, int specialAttack,
                    int classicAttack, int specialDefense,
                    int specialDefenseMax,
                    int classicDefense,
-                   int classicDefenseMax, Type type, Status status) {
+                   int classicDefenseMax, Type type,Status status, Item item) {
 
         this.name = name;
         this.hp = hp;
@@ -76,6 +79,7 @@ public class Pokemon {
         this.classicDefenseMax = classicDefenseMax;
         this.type = type;
         this.status = status;
+        this.item = item;
     }
 
     // Getters
@@ -127,16 +131,20 @@ public class Pokemon {
         return type2;
     }
 
+    public Status getStatus() {
+        return status;
+    }
+
+    public Item getItem() {
+        return item;
+    }
+
     public Statut getStatut() {
         return statut;
     }
 
     public void setStatut(Statut statut) {
         this.statut = statut;
-    }
-
-    public Status getStatus() {
-        return status;
     }
 
     // Setters
@@ -179,6 +187,12 @@ public class Pokemon {
     public void setStatus(Status status) {
         this.status = status;
     }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
+
+
 
     public ArrayList<Attack> getListAttacks() {
         return listAttacks;

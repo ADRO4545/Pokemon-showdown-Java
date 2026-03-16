@@ -31,6 +31,10 @@ public class Status {
         return coefSpeed;
     }
 
+    public void setName(String name) {
+        this.name=name;
+    }
+
 
 
 
