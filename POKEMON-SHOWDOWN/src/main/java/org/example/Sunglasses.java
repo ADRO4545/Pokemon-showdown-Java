@@ -1,27 +1,24 @@
 package org.example;
 
-public class Sunglasses implements Item{
+public class Sunglasses implements Item {
 
     @Override
     public String getName() {
         return "Sunglasses";
     }
 
+    public double effectBeforeAttack(Pokemon attacker,
+            Pokemon defender,
+            Attack attack) {
 
-    public double effectBeforeAttack(Pokemon pokemonAttack,
-                                     Pokemon pokemonDefend,
-                                     Attack a) {
+        Type typeAttack = attack.getType();
+        double finalDamage = attack.calculateDamage(attacker, defender);
 
-        Type typeAttack=a.getType();
-        double finalDamage=a.calculateDamage(pokemonAttack,pokemonDefend);
-
-        if(typeAttack.getName().equals("Dark")){
-            finalDamage=finalDamage*1.2;
+        if (typeAttack.getName().equals("Dark")) {
+            finalDamage = finalDamage * 1.2;
         }
 
         return finalDamage;
-
-
 
     }
 }

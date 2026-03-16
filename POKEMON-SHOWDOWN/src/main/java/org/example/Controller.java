@@ -88,14 +88,14 @@ public class Controller {
                                 specialDefense, specialDefense,
                                 classicDefense, classicDefense,
                                 allTypes.get(type), allTypes.get(type2),
-                                allStatus.get("NONE")));
+                                allStatus.get("NONE"), null));
                     } else {
                         allPokemon.put(namePokemon, new Pokemon(namePokemon, hp, maxHp,
                                 speed, specialAttack, classicAttack,
                                 specialDefense, specialDefense,
                                 classicDefense, classicDefense,
                                 allTypes.get(type),
-                                allStatus.get("NONE")));
+                                allStatus.get("NONE"), null));
                     }
                 }
             }

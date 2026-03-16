@@ -6,17 +6,17 @@ public class Ball implements Item {
         return "Ball";
     }
 
-    public double effectBeforeDefense(Pokemon pokemonAttack,
-                                      Pokemon pokemonDefend,
-                                      Attack a) {
+    public double effectBeforeDefense(Pokemon holder,
+            Attack attack,
+            double damage) {
 
-        double finalDamage = a.calculateDamage(pokemonAttack, pokemonDefend);
+        double finalDamage = damage;
 
-        if (a.getType().getName().equals("Ground")) {
+        if (attack.getType().getName().equals("Ground")) {
             finalDamage = 0;
 
         } else {
-            pokemonAttack.setItem(null);
+            holder.setItem(null);
         }
         return finalDamage;
     }

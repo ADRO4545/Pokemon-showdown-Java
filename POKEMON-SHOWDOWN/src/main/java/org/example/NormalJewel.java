@@ -8,21 +8,19 @@ public class NormalJewel implements Item {
     }
 
     @Override
-    public double effectBeforeDefense(Pokemon pokemonAttack,
-                                      Pokemon pokemonDefend,
-                                      Attack a) {
+    public double effectBeforeDefense(Pokemon holder,
+            Attack attack,
+            double damage) {
 
-        double finalDamage = a.calculateDamage(pokemonAttack, pokemonDefend);
+        double finalDamage = damage;
 
-        if(a.getType().getName().equals("Normal")){
-            finalDamage=finalDamage*1.5;
-            pokemonAttack.setItem(null);
+        if (attack.getType().getName().equals("Normal")) {
+            finalDamage = finalDamage * 1.5;
+            holder.setItem(null);
         }
 
         return finalDamage;
 
-
     }
-
 
 }

@@ -7,15 +7,13 @@ public class BaiePrine implements Item {
         return "BaiePrine";
     }
 
-    public void effectAfterStatus(Pokemon p){
+    public void effectAfterStatus(Pokemon holder) {
 
-        if(p.getStatus()!=null){
-            p.setStatus(null);
-            p.setItem(null);
+        if (holder.getStatus() != null) {
+            holder.setStatus(null);
+            holder.setItem(null);
         }
 
-
     }
-
 
 }

@@ -15,19 +15,19 @@ public class Attack {
         this.type = type;
     }
 
-    public Type getType(){
+    public Type getType() {
         return this.type;
     }
 
-    public double getPower(){
+    public double getPower() {
         return this.power;
     }
 
-    public void setPower(double power){
-        this.power=power;
+    public void setPower(double power) {
+        this.power = power;
     }
 
-    public int[] setupCombatStats (Pokemon pokemonAttack, Pokemon pokemonDefend){
+    public int[] setupCombatStats(Pokemon pokemonAttack, Pokemon pokemonDefend) {
         int attackStat;
         int defenseStat;
 
@@ -46,6 +46,9 @@ public class Attack {
     public double calculateDamage(Pokemon pokemonAttack, Pokemon pokemonDefend) {
         Random random = new Random();
         double coefficient = type.getCoef(pokemonDefend.getType());
+        if (pokemonDefend.getType2() != null) {
+            coefficient *= type.getCoef(pokemonDefend.getType2());
+        }
         double damage;
         int[] tableValue = setupCombatStats(pokemonAttack, pokemonDefend);
         double statusCoef = 0;
@@ -55,28 +58,34 @@ public class Attack {
         damage = this.power * ((double) tableValue[0] / tableValue[1]) * coefficient *
                 (random.nextInt(85, 100) / 100.0) + pokemonDefend.getMaxHp() * statusCoef;
 
+        // Effet de l'Objet Avant Attaque
+        if (pokemonAttack.getItem() != null) {
+            damage = pokemonAttack.getItem().effectBeforeAttack(pokemonAttack, pokemonDefend, this);
+        }
+
         return damage;
     }
 
     public void receiveDamage(Pokemon pokemonAttack, Pokemon pokemonDefend) {
-        pokemonDefend.setHp(pokemonDefend.getHp() -
-                calculateDamage(pokemonAttack, pokemonDefend));
+        double degatsBruts = calculateDamage(pokemonAttack, pokemonDefend);
+
+        // Effet de l'Objet Avant Défense
+        if (pokemonDefend.getItem() != null) {
+            degatsBruts = pokemonDefend.getItem().effectBeforeDefense(pokemonDefend, this, degatsBruts);
+        }
+        if (pokemonAttack.getItem() != null) {
+            degatsBruts = pokemonAttack.getItem().effectBeforeDefense(pokemonAttack, this, degatsBruts);
+        }
+
+        pokemonDefend.setHp(pokemonDefend.getHp() - degatsBruts);
     }
 
     public String getName() {
-        return name;
-    }
-
-    public int getPower() {
-        return power;
+        return this.name;
     }
 
     public String getCategory() {
         return category;
-    }
-
-    public Type getType() {
-        return type;
     }
 
     public String toString() {

@@ -5,11 +5,11 @@ public class Restes implements Item {
         return "Restes";
     }
 
-    public void effectEndTour(Pokemon p) {
-            double healthvalue = p.getMaxHp() * 0.08;
-            p.setHp(p.getHp() + healthvalue);
-         if (p.getHp()>p.getMaxHp()){
-            p.setHp(p.getMaxHp());
+    public void effectEndTour(Pokemon holder) {
+            double healthvalue = holder.getMaxHp() * 0.08;
+            holder.setHp(holder.getHp() + healthvalue);
+         if (holder.getHp()>holder.getMaxHp()){
+            holder.setHp(holder.getMaxHp());
         }
     }
 }

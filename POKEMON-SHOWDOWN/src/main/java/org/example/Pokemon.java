@@ -96,6 +96,9 @@ public class Pokemon {
     }
 
     public int getSpeed() {
+        if (this.status != null) {
+            return (int) (speed * this.status.getCoefSpeed());
+        }
         return speed;
     }
 

@@ -6,21 +6,21 @@ import org.example.Pokemon;
 public interface Item {
     String getName();
 
-    default void effectEndTour(Pokemon p) {
+    default void effectEndTour(Pokemon holder) {
     }
 
-    default double effectBeforeAttack(Pokemon pokemonAttack,
-                                      Pokemon pokemonDefend,
-                                      Attack a ) {
-        return a.calculateDamage(pokemonAttack,pokemonDefend);
+    default double effectBeforeAttack(Pokemon attacker,
+                                      Pokemon defender,
+                                      Attack attack ) {
+        return attack.calculateDamage(attacker, defender);
     }
 
-    default double effectBeforeDefense(Pokemon p,
-                                       Attack a,
-                                       double degats) {
-        return degats;
+    default double effectBeforeDefense(Pokemon holder,
+                                       Attack attack,
+                                       double damage) {
+        return damage;
     }
 
-    default void effectAfterStatus(Pokemon p) {
+    default void effectAfterStatus(Pokemon holder) {
     }
 }
