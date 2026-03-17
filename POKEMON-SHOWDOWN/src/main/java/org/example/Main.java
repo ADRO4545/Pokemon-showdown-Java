@@ -58,17 +58,11 @@ public class Main extends Application {
         System.out.println("Pokemon 2 : " + pokemon2);
 
         // game loop
-        while (pokemon1.getHp() > 0 && pokemon2.getHp() > 0) {
+        while (!TourManager.isPokemonKO(pokemon1, pokemon2)) {
 
-            // 1er poke
-            jouerTour(pokemon1, pokemon2);
-            if (pokemon2.getHp() <= 0 || pokemon1.getHp() <= 0)
+            if (TourManager.executerAttaques(pokemon1, pokemon2)) {
                 break;
-
-            // 2eme poke
-            jouerTour(pokemon2, pokemon1);
-            if (pokemon1.getHp() <= 0 || pokemon2.getHp() <= 0)
-                break;
+            }
 
             // Fin de tour
             appliquerObjetFinDeTour(pokemon1);
@@ -79,7 +73,7 @@ public class Main extends Application {
             appliquerStatutFinDeTour(pokemon2);
 
             // Vérif Mort après status
-            if (pokemon1.getHp() <= 0 || pokemon2.getHp() <= 0)
+            if (TourManager.isPokemonKO(pokemon1, pokemon2))
                 break;
         }
 
@@ -94,7 +88,7 @@ public class Main extends Application {
         }
     }
 
-    private static void jouerTour(Pokemon attaquant, Pokemon defenseur) {
+    public static void jouerTour(Pokemon attaquant, Pokemon defenseur) {
         // Check paralysis
         if (attaquant.getStatut() != null && !attaquant.getStatut().canAttack(attaquant)) {
             System.out.println(attaquant.getName() + " est paralysé et ne peut pas attaquer !");
@@ -108,12 +102,7 @@ public class Main extends Application {
         System.out.println("  HP " + defenseur.getName() + " = " + defenseur.getHp());
         System.out.println("  HP " + attaquant.getName() + " = " + attaquant.getHp());
 
-        if (defenseur.getItem() != null) {
-            defenseur.getItem().effectAfterStatus(defenseur);
-        }
-        if (attaquant.getItem() != null) {
-            attaquant.getItem().effectAfterStatus(attaquant);
-        }
+        TourManager.makeEffectsObjectsAfterAttack(attaquant, defenseur);
 
         // Check KO
         if (defenseur.getHp() <= 0) {
