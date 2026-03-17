@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Button text="Test"
+        prefWidth="300.0" prefHeight="60.0"
+        style="-fx-background-color: #f54a4a;
+                   -fx-text-fill: white;
+                   -fx-font-size: 24px;
+                   -fx-font-weight: bold;
+                   -fx-background-radius: 30;
+                   -fx-cursor: hand;" />

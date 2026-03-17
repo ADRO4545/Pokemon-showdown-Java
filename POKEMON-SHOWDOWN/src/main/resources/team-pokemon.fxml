@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox alignment="CENTER" spacing="30.0" prefHeight="700.0" prefWidth="1100.0"
+      style="-fx-background-color: #1a1f3c;"
+      xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.example.TeamController">
+    <padding>
+        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+    </padding>
+
+    <HBox alignment="CENTER" spacing="50.0">
+
+        <VBox alignment="TOP_CENTER" spacing="20.0"
+              style="-fx-background-color: #2a3256; -fx-background-radius: 15; -fx-padding: 20;">
+            <Label text="Équipe 1" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #4a7af5;" />
+
+            <GridPane hgap="20.0" vgap="20.0" alignment="CENTER">
+
+                <VBox GridPane.columnIndex="0" GridPane.rowIndex="0"
+                      alignment="CENTER" spacing="10.0" style="-fx-background-color: #3b446b;
+                      -fx-background-radius: 10; -fx-padding: 15;">
+                    <ImageView fx:id="imgT1P1" fitHeight="100.0" fitWidth="100.0" preserveRatio="true" />
+                    <Label fx:id="nomT1P1" text="?" style="-fx-text-fill: white; -fx-font-weight: bold;" />
+                    <ComboBox fx:id="comboT1P1" promptText="Choisir un Pokémon" prefWidth="150.0" onAction="#putPokemon"/>
+                    <ComboBox fx:id="itemT1P1" promptText="Objet tenu" prefWidth="150.0" />
+                </VBox>
+
+                <VBox GridPane.columnIndex="1" GridPane.rowIndex="0"
+                      alignment="CENTER" spacing="10.0" style="-fx-background-color: #3b446b;
+                      -fx-background-radius: 10; -fx-padding: 15;">
+                    <ImageView fx:id="imgT1P2" fitHeight="100.0" fitWidth="100.0" preserveRatio="true" />
+                    <Label fx:id="nomT1P2" text="?" style="-fx-text-fill: white; -fx-font-weight: bold;" />
+                    <ComboBox fx:id="comboT1P2" promptText="Choisir un Pokémon" prefWidth="150.0" onAction="#putPokemon" />
+                    <ComboBox fx:id="itemT1P2" promptText="Objet tenu" prefWidth="150.0" />
+                </VBox>
+
+                <VBox GridPane.columnIndex="0" GridPane.rowIndex="1" alignment="CENTER"
+                      spacing="10.0" style="-fx-background-color: #3b446b;
+                      -fx-background-radius: 10; -fx-padding: 15;">
+                    <ImageView fx:id="imgT1P3" fitHeight="100.0" fitWidth="100.0" preserveRatio="true" />
+                    <Label fx:id="nomT1P3" text="?" style="-fx-text-fill: white; -fx-font-weight: bold;" />
+                    <ComboBox fx:id="comboT1P3" promptText="Choisir un Pokémon" prefWidth="150.0" onAction="#putPokemon" />
+                    <ComboBox fx:id="itemT1P3" promptText="Objet tenu" prefWidth="150.0" />
+                </VBox>
+
+                <VBox GridPane.columnIndex="1" GridPane.rowIndex="1" alignment="CENTER"
+                      spacing="10.0" style="-fx-background-color: #3b446b;
+                      -fx-background-radius: 10; -fx-padding: 15;">
+                    <ImageView fx:id="imgT1P4" fitHeight="100.0" fitWidth="100.0" preserveRatio="true" />
+                    <Label fx:id="nomT1P4" text="?" style="-fx-text-fill: white; -fx-font-weight: bold;" />
+                    <ComboBox fx:id="comboT1P4" promptText="Choisir un Pokémon" prefWidth="150.0" onAction="#putPokemon" />
+                    <ComboBox fx:id="itemT1P4" promptText="Objet tenu" prefWidth="150.0" />
+                </VBox>
+
+            </GridPane>
+        </VBox>
+
+        <VBox alignment="TOP_CENTER" spacing="20.0" style="-fx-background-color: #2a3256;
+        -fx-background-radius: 15; -fx-padding: 20;">
+            <Label text="Équipe 2" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #f54a4a;" />
+
+            <GridPane hgap="20.0" vgap="20.0" alignment="CENTER">
+
+                <VBox GridPane.columnIndex="0" GridPane.rowIndex="0"
+                      alignment="CENTER" spacing="10.0" style="-fx-background-color: #3b446b;
+                      -fx-background-radius: 10; -fx-padding: 15;">
+                    <ImageView fx:id="imgT2P1" fitHeight="100.0" fitWidth="100.0" preserveRatio="true" />
+                    <Label fx:id="nomT2P1" text="?" style="-fx-text-fill: white; -fx-font-weight: bold;" />
+                    <ComboBox fx:id="comboT2P1" promptText="Choisir un Pokémon" prefWidth="150.0" onAction="#putPokemon" />
+                    <ComboBox fx:id="itemT2P1" promptText="Objet tenu" prefWidth="150.0" />
+                </VBox>
+
+                <VBox GridPane.columnIndex="1" GridPane.rowIndex="0" alignment="CENTER"
+                      spacing="10.0" style="-fx-background-color: #3b446b;
+                      -fx-background-radius: 10; -fx-padding: 15;">
+                    <ImageView fx:id="imgT2P2" fitHeight="100.0" fitWidth="100.0" preserveRatio="true" />
+                    <Label fx:id="nomT2P2" text="?" style="-fx-text-fill: white; -fx-font-weight: bold;" />
+                    <ComboBox fx:id="comboT2P2" promptText="Choisir un Pokémon" prefWidth="150.0" onAction="#putPokemon" />
+                    <ComboBox fx:id="itemT2P2" promptText="Objet tenu" prefWidth="150.0" />
+                </VBox>
+
+                <VBox GridPane.columnIndex="0" GridPane.rowIndex="1"
+                      alignment="CENTER" spacing="10.0" style="-fx-background-color: #3b446b;
+                      -fx-background-radius: 10; -fx-padding: 15;">
+                    <ImageView fx:id="imgT2P3" fitHeight="100.0" fitWidth="100.0" preserveRatio="true" />
+                    <Label fx:id="nomT2P3" text="?" style="-fx-text-fill: white; -fx-font-weight: bold;" />
+                    <ComboBox fx:id="comboT2P3" promptText="Choisir un Pokémon" prefWidth="150.0" onAction="#putPokemon"/>
+                    <ComboBox fx:id="itemT2P3" promptText="Objet tenu" prefWidth="150.0" />
+                </VBox>
+
+                <VBox GridPane.columnIndex="1" GridPane.rowIndex="1" alignment="CENTER"
+                      spacing="10.0" style="-fx-background-color: #3b446b; -fx-background-radius: 10; -fx-padding: 15;">
+                    <ImageView fx:id="imgT2P4" fitHeight="100.0" fitWidth="100.0" preserveRatio="true" />
+                    <Label fx:id="nomT2P4" text="?" style="-fx-text-fill: white; -fx-font-weight: bold;" />
+                    <ComboBox fx:id="comboT2P4" promptText="Choisir un Pokémon" prefWidth="150.0" onAction="#putPokemon" />
+                    <ComboBox fx:id="itemT2P4" promptText="Objet tenu" prefWidth="150.0" />
+                </VBox>
+
+            </GridPane>
+        </VBox>
+
+    </HBox> <Button text="COMBATTRE !" onAction="#startBattle"
+                    prefWidth="300.0" prefHeight="60.0"
+                    style="-fx-background-color: #f54a4a;
+                   -fx-text-fill: white;
+                   -fx-font-size: 24px;
+                   -fx-font-weight: bold;
+                   -fx-background-radius: 30;
+                   -fx-cursor: hand;" />
+
+</VBox>

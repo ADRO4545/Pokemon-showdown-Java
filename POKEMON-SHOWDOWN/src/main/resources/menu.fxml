@@ -25,7 +25,7 @@
                    -fx-font-size: 16px;
                    -fx-font-weight: bold;
                    -fx-background-radius: 10;
-                   -fx-cursor: hand;" />
+                   -fx-cursor: hand;" onAction="#newWindow"/>
 
     <!-- Copyright en bas -->
     <Label text="© 2026 Pokémon Battle Simulator. Arthur Drugeault, Pierre Soreau."
