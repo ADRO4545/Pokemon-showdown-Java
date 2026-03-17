@@ -4,12 +4,40 @@ import org.example.status.Brulure;
 import org.example.status.Paralysie;
 import org.example.status.Poison;
 import org.example.status.Statut;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.util.Callback;
 
 import java.util.HashMap;
 
-public class Main {
+public class Main extends Application {
+
+    @Override
+    public void start(Stage primaryStage) {
+        try {
+            // On charge le fichier FXML depuis le dossier resources
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/menu.fxml"));
+            Parent root = loader.load();
+
+            // On prépare la scène
+            Scene scene = new Scene(root);
+
+            primaryStage.setTitle("Pokémon Game");
+            primaryStage.setScene(scene);
+            primaryStage.show(); // On affiche la fenêtre
+
+        } catch (Exception e) {
+            System.err.println("ERREUR : Impossible de charger le fichier FXML !");
+            e.printStackTrace();
+        }
+    }
 
     public static void main(String[] args) {
+
+        launch(args);
 
         // Chargement depuis la BDD
         HashMap<String, Status> allStatus = Controller.findAllStatut();
