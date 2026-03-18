@@ -30,6 +30,11 @@
        -fx-background-radius: 15;
        -fx-padding: 20;"
        HBox.hgrow="ALWAYS">
+       <ImageView fx:id="imgAttackAnimation" 
+                 fitHeight="150.0" 
+                 fitWidth="150.0" 
+                 preserveRatio="true" 
+                 visible="false" />
          <Label style="-fx-text-fill: #4a7af5;
           -fx-font-size: 22px;
           -fx-font-weight: bold;"
@@ -181,6 +186,11 @@
           -fx-font-weight: bold;"
           text="Mon Deck" />
          <HBox alignment="CENTER" spacing="20.0">
+         <ImageView fx:id="imgAttackAnimation"
+          fitHeight="150.0"
+          fitWidth="150.0"
+          preserveRatio="true"
+          visible="false" />
             <Button fx:id="btnSwitch1"
              prefHeight="40.0"
              prefWidth="200.0"

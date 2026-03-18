@@ -1,5 +1,6 @@
 package org.example;
 
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -7,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.util.Duration;
 
 import java.util.Arrays;
 import java.util.List;
@@ -41,6 +43,9 @@ public class FightController {
     private Pokemon activeEnemyPokemon;
 
     private boolean isPlayerForcedToSwitch = false;
+
+    @FXML
+    private ImageView imgAttackAnimation;
 
     public void initData(List<Pokemon> playersTeam, List<Pokemon> enemiesTeam, int leadIndex) {
         this.playersTeam = playersTeam;
@@ -111,6 +116,8 @@ public class FightController {
 
         SoundManager.playAttackSound("sncf.wav");
 
+        playAttackAnimation("arrow.gif");
+
         Button boutonClique = (Button) event.getSource();
         List<Button> atkButtons = Arrays.asList(btnAtk1, btnAtk2, btnAtk3, btnAtk4);
         int indexAttaque = atkButtons.indexOf(boutonClique);
@@ -167,6 +174,8 @@ public class FightController {
 
         SoundManager.playAttackSound("cri.wav");
 
+        playAttackAnimation("explosion.gif");
+
         Button btnClique = (Button) event.getSource();
         List<Button> switchBtns = Arrays.asList(btnSwitch1, btnSwitch2, btnSwitch3, btnSwitch4);
         int index = switchBtns.indexOf(btnClique);
@@ -210,6 +219,24 @@ public class FightController {
 
         if (activePlayerPokemon.getHp() <= 0 || activeEnemyPokemon.getHp() <= 0) {
             handleBattleEnd();
+        }
+    }
+
+    private void playAttackAnimation(String gifFileName) {
+        try {
+            // Charge le GIF
+            String gifPath = "/images/" + gifFileName;
+            imgAttackAnimation.setImage(new Image(getClass().getResource(gifPath).toExternalForm()));
+            imgAttackAnimation.setVisible(true); // Rend le GIF visible
+
+            // Crée un minuteur pour cacher le GIF après 1.5 secondes (ajustez selon la
+            // durée de votre GIF)
+            PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
+            pause.setOnFinished(event -> imgAttackAnimation.setVisible(false));
+            pause.play();
+
+        } catch (Exception e) {
+            System.err.println("GIF d'attaque introuvable : " + gifFileName);
         }
     }
 
