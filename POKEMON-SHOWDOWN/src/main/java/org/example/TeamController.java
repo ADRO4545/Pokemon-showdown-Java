@@ -29,14 +29,7 @@ public class TeamController {
     private ComboBox<String> comboT1P3;
     @FXML
     private ComboBox<String> comboT1P4;
-    @FXML
-    private ComboBox<String> comboT2P1;
-    @FXML
-    private ComboBox<String> comboT2P2;
-    @FXML
-    private ComboBox<String> comboT2P3;
-    @FXML
-    private ComboBox<String> comboT2P4;
+
     @FXML
     private Label nomT1P1;
     @FXML
@@ -45,14 +38,7 @@ public class TeamController {
     private Label nomT1P3;
     @FXML
     private Label nomT1P4;
-    @FXML
-    private Label nomT2P1;
-    @FXML
-    private Label nomT2P2;
-    @FXML
-    private Label nomT2P3;
-    @FXML
-    private Label nomT2P4;
+
     @FXML
     private ImageView imgT1P1;
     @FXML
@@ -61,14 +47,7 @@ public class TeamController {
     private ImageView imgT1P3;
     @FXML
     private ImageView imgT1P4;
-    @FXML
-    private ImageView imgT2P1;
-    @FXML
-    private ImageView imgT2P2;
-    @FXML
-    private ImageView imgT2P3;
-    @FXML
-    private ImageView imgT2P4;
+
     @FXML
     private ComboBox<String> itemT1P1;
     @FXML
@@ -78,16 +57,7 @@ public class TeamController {
     @FXML
     private ComboBox<String> itemT1P4;
 
-    @FXML
-    private ComboBox<String> itemT2P1;
-    @FXML
-    private ComboBox<String> itemT2P2;
-    @FXML
-    private ComboBox<String> itemT2P3;
-    @FXML
-    private ComboBox<String> itemT2P4;
-
-    // attack t1
+    // AAttack team 1
     @FXML
     private ComboBox<String> atk1T1P1;
     @FXML
@@ -124,42 +94,46 @@ public class TeamController {
     @FXML
     private ComboBox<String> atk4T1P4;
 
-    // attack t2
-    @FXML
-    private ComboBox<String> atk1T2P1;
-    @FXML
-    private ComboBox<String> atk2T2P1;
-    @FXML
-    private ComboBox<String> atk3T2P1;
-    @FXML
-    private ComboBox<String> atk4T2P1;
+    private ComboBox<String> comboT2P1 = new ComboBox<>();
+    private ComboBox<String> comboT2P2 = new ComboBox<>();
+    private ComboBox<String> comboT2P3 = new ComboBox<>();
+    private ComboBox<String> comboT2P4 = new ComboBox<>();
 
-    @FXML
-    private ComboBox<String> atk1T2P2;
-    @FXML
-    private ComboBox<String> atk2T2P2;
-    @FXML
-    private ComboBox<String> atk3T2P2;
-    @FXML
-    private ComboBox<String> atk4T2P2;
+    private Label nomT2P1 = new Label();
+    private Label nomT2P2 = new Label();
+    private Label nomT2P3 = new Label();
+    private Label nomT2P4 = new Label();
 
-    @FXML
-    private ComboBox<String> atk1T2P3;
-    @FXML
-    private ComboBox<String> atk2T2P3;
-    @FXML
-    private ComboBox<String> atk3T2P3;
-    @FXML
-    private ComboBox<String> atk4T2P3;
+    private ImageView imgT2P1 = new ImageView();
+    private ImageView imgT2P2 = new ImageView();
+    private ImageView imgT2P3 = new ImageView();
+    private ImageView imgT2P4 = new ImageView();
 
-    @FXML
-    private ComboBox<String> atk1T2P4;
-    @FXML
-    private ComboBox<String> atk2T2P4;
-    @FXML
-    private ComboBox<String> atk3T2P4;
-    @FXML
-    private ComboBox<String> atk4T2P4;
+    private ComboBox<String> itemT2P1 = new ComboBox<>();
+    private ComboBox<String> itemT2P2 = new ComboBox<>();
+    private ComboBox<String> itemT2P3 = new ComboBox<>();
+    private ComboBox<String> itemT2P4 = new ComboBox<>();
+
+    // attack team 2
+    private ComboBox<String> atk1T2P1 = new ComboBox<>();
+    private ComboBox<String> atk2T2P1 = new ComboBox<>();
+    private ComboBox<String> atk3T2P1 = new ComboBox<>();
+    private ComboBox<String> atk4T2P1 = new ComboBox<>();
+
+    private ComboBox<String> atk1T2P2 = new ComboBox<>();
+    private ComboBox<String> atk2T2P2 = new ComboBox<>();
+    private ComboBox<String> atk3T2P2 = new ComboBox<>();
+    private ComboBox<String> atk4T2P2 = new ComboBox<>();
+
+    private ComboBox<String> atk1T2P3 = new ComboBox<>();
+    private ComboBox<String> atk2T2P3 = new ComboBox<>();
+    private ComboBox<String> atk3T2P3 = new ComboBox<>();
+    private ComboBox<String> atk4T2P3 = new ComboBox<>();
+
+    private ComboBox<String> atk1T2P4 = new ComboBox<>();
+    private ComboBox<String> atk2T2P4 = new ComboBox<>();
+    private ComboBox<String> atk3T2P4 = new ComboBox<>();
+    private ComboBox<String> atk4T2P4 = new ComboBox<>();
 
     private HashMap<String, Pokemon> allPokemons;
 
