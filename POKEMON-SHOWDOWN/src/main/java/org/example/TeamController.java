@@ -87,6 +87,82 @@ public class TeamController {
     @FXML
     private ComboBox<String> itemT2P4;
 
+    // attack t1
+    @FXML
+    private ComboBox<String> atk1T1P1;
+    @FXML
+    private ComboBox<String> atk2T1P1;
+    @FXML
+    private ComboBox<String> atk3T1P1;
+    @FXML
+    private ComboBox<String> atk4T1P1;
+
+    @FXML
+    private ComboBox<String> atk1T1P2;
+    @FXML
+    private ComboBox<String> atk2T1P2;
+    @FXML
+    private ComboBox<String> atk3T1P2;
+    @FXML
+    private ComboBox<String> atk4T1P2;
+
+    @FXML
+    private ComboBox<String> atk1T1P3;
+    @FXML
+    private ComboBox<String> atk2T1P3;
+    @FXML
+    private ComboBox<String> atk3T1P3;
+    @FXML
+    private ComboBox<String> atk4T1P3;
+
+    @FXML
+    private ComboBox<String> atk1T1P4;
+    @FXML
+    private ComboBox<String> atk2T1P4;
+    @FXML
+    private ComboBox<String> atk3T1P4;
+    @FXML
+    private ComboBox<String> atk4T1P4;
+
+    // attack t2
+    @FXML
+    private ComboBox<String> atk1T2P1;
+    @FXML
+    private ComboBox<String> atk2T2P1;
+    @FXML
+    private ComboBox<String> atk3T2P1;
+    @FXML
+    private ComboBox<String> atk4T2P1;
+
+    @FXML
+    private ComboBox<String> atk1T2P2;
+    @FXML
+    private ComboBox<String> atk2T2P2;
+    @FXML
+    private ComboBox<String> atk3T2P2;
+    @FXML
+    private ComboBox<String> atk4T2P2;
+
+    @FXML
+    private ComboBox<String> atk1T2P3;
+    @FXML
+    private ComboBox<String> atk2T2P3;
+    @FXML
+    private ComboBox<String> atk3T2P3;
+    @FXML
+    private ComboBox<String> atk4T2P3;
+
+    @FXML
+    private ComboBox<String> atk1T2P4;
+    @FXML
+    private ComboBox<String> atk2T2P4;
+    @FXML
+    private ComboBox<String> atk3T2P4;
+    @FXML
+    private ComboBox<String> atk4T2P4;
+
+    private HashMap<String, Pokemon> allPokemons;
+
     @FXML
     public void initialize() {
 
@@ -94,6 +170,9 @@ public class TeamController {
         HashMap<String, Status> status = Controller.findAllStatut();
         HashMap<String, Pokemon> pokemons = Controller.findAllPokemon(type, status);
         HashMap<String, Item> objectsCatalog = new HashMap<>();
+
+        Controller.findAllAttacks(type, pokemons, status);
+
         objectsCatalog.put("Restes", new Restes());
         objectsCatalog.put("NormalJewel", new NormalJewel());
         objectsCatalog.put("Sunglasses", new Sunglasses());
@@ -117,6 +196,10 @@ public class TeamController {
             co.getItems().addAll(objectsCatalog.keySet());
             co.getSelectionModel().select("Choisir un Objet");
         }
+
+        this.allPokemons = pokemons;
+
+        setupPokemonSelectionListeners();
 
         // Generate random enemy team (Team 2)
         generateRandomEnemyTeam(pokemons, objectsCatalog);
@@ -142,17 +225,110 @@ public class TeamController {
                 imgT2P1, imgT2P2, imgT2P3, imgT2P4);
     }
 
+    public List<ComboBox<String>> getAttackCombosForSlot(int slotIndex) {
+        switch (slotIndex) {
+            case 0:
+                return Arrays.asList(atk1T1P1,
+                        atk2T1P1,
+                        atk3T1P1,
+                        atk4T1P1);
+            case 1:
+                return Arrays.asList(atk1T1P2,
+                        atk2T1P2,
+                        atk3T1P2,
+                        atk4T1P2);
+            case 2:
+                return Arrays.asList(atk1T1P3,
+                        atk2T1P3,
+                        atk3T1P3,
+                        atk4T1P3);
+            case 3:
+                return Arrays.asList(atk1T1P4,
+                        atk2T1P4,
+                        atk3T1P4,
+                        atk4T1P4);
+            case 4:
+                return Arrays.asList(atk1T2P1,
+                        atk2T2P1,
+                        atk3T2P1,
+                        atk4T2P1);
+            case 5:
+                return Arrays.asList(atk1T2P2,
+                        atk2T2P2,
+                        atk3T2P2,
+                        atk4T2P2);
+            case 6:
+                return Arrays.asList(atk1T2P3,
+                        atk2T2P3,
+                        atk3T2P3,
+                        atk4T2P3);
+            case 7:
+                return Arrays.asList(atk1T2P4,
+                        atk2T2P4,
+                        atk3T2P4,
+                        atk4T2P4);
+            default:
+                return new ArrayList<>();
+        }
+    }
+
+    private void setupPokemonSelectionListeners() {
+        List<ComboBox<String>> pokemonCombos = listCombosPoke();
+        for (int i = 0; i < pokemonCombos.size(); i++) {
+            final int slotIndex = i;
+            ComboBox<String> combo = pokemonCombos.get(i);
+            combo.valueProperty().addListener((observable, oldValue, newValue) -> {
+                handlePokemonSelectionChange(slotIndex, newValue);
+            });
+        }
+    }
+
+    private void handlePokemonSelectionChange(int slotIndex, String newPokemonName) {
+        List<ComboBox<String>> attackCombos = getAttackCombosForSlot(slotIndex);
+
+        // Clear previous attacks
+        for (ComboBox<String> atkCombo : attackCombos) {
+            atkCombo.getItems().clear();
+            atkCombo.getSelectionModel().clearSelection();
+        }
+
+        if (isValidPokemonSelection(newPokemonName)) {
+            Pokemon selectedPokemon = allPokemons.get(newPokemonName);
+            if (selectedPokemon != null) {
+                populateAttackCombos(attackCombos, selectedPokemon.getListAttacks());
+            }
+        }
+    }
+
+    private void populateAttackCombos(List<ComboBox<String>> attackCombos,
+            List<Attack> pokemonAttacks) {
+        List<String> attackNames = new ArrayList<>();
+        attackNames.add("Choisir une Attaque");
+        for (Attack atk : pokemonAttacks) {
+            attackNames.add(atk.getName());
+        }
+
+        for (ComboBox<String> atkCombo : attackCombos) {
+            atkCombo.getItems().addAll(attackNames);
+            atkCombo.getSelectionModel().select("Choisir une Attaque");
+        }
+    }
+
     public void putPokemon() {
         List<ComboBox<String>> namesCombosPoke = this.listCombosPoke();
         List<Label> listLabels = this.listLabels();
         List<ImageView> images = this.listImages();
 
         for (int i = 0; i < namesCombosPoke.size(); i++) {
-            updateSinglePokemonDisplay(namesCombosPoke.get(i), listLabels.get(i), images.get(i));
+            updateSinglePokemonDisplay(namesCombosPoke.get(i),
+                    listLabels.get(i),
+                    images.get(i));
         }
     }
 
-    private void updateSinglePokemonDisplay(ComboBox<String> combo, Label label, ImageView imageView) {
+    private void updateSinglePokemonDisplay(ComboBox<String> combo,
+            Label label,
+            ImageView imageView) {
         String selectedPokemon = combo.getValue();
 
         if (isValidPokemonSelection(selectedPokemon)) {
@@ -163,7 +339,9 @@ public class TeamController {
     }
 
     private boolean isValidPokemonSelection(String pokemonName) {
-        return pokemonName != null && !pokemonName.equals("Choisir un Pokemon") && !pokemonName.trim().isEmpty();
+        return pokemonName != null &&
+                !pokemonName.equals("Choisir un Pokemon") &&
+                !pokemonName.trim().isEmpty();
     }
 
     private void displayPokemon(String pokemonName, Label label, ImageView imageView) {
@@ -186,6 +364,10 @@ public class TeamController {
 
     public void startBattle(ActionEvent event) {
         if (!areBothTeamsValid()) {
+            return;
+        }
+
+        if (!areAttacksValid()) {
             return;
         }
 
@@ -278,6 +460,7 @@ public class TeamController {
                 assignRandomItem(combosT2Item.get(i),
                         itemNames,
                         random);
+                assignRandomAttacksForSlot(i + 4, random);
             }
         }
 
@@ -296,9 +479,6 @@ public class TeamController {
         combo.getSelectionModel().select(randomPoke);
     }
 
-    /**
-     * Randomly assigns an item or none.
-     */
     private void assignRandomItem(ComboBox<String> combo,
             List<String> itemNames,
             Random random) {
@@ -308,6 +488,29 @@ public class TeamController {
             combo.getSelectionModel().select(randomItem);
         } else {
             combo.getSelectionModel().select("Choisir un Objet");
+        }
+    }
+
+    private void assignRandomAttacksForSlot(int slotIndex, Random random) {
+        List<ComboBox<String>> attackCombos = getAttackCombosForSlot(slotIndex);
+        List<Integer> usedIndexes = new ArrayList<>();
+
+        for (ComboBox<String> atkCombo : attackCombos) {
+            atkCombo.setDisable(true); // disable interadoto team2
+
+            List<String> availableAttacks = atkCombo.getItems();
+            if (availableAttacks.size() > 1) {
+                int randomIndex = 1 + random.nextInt(availableAttacks.size() - 1);
+                int attempts = 1;
+
+                while (usedIndexes.contains(randomIndex) && attempts < 10) {
+                    randomIndex = 1 + random.nextInt(availableAttacks.size() - 1);
+                    attempts++;
+                }
+
+                usedIndexes.add(randomIndex);
+                atkCombo.getSelectionModel().select(randomIndex);
+            }
         }
     }
 
@@ -325,5 +528,65 @@ public class TeamController {
             return false;
         }
         return true;
+    }
+
+    private boolean areAttacksValid() {
+        List<ComboBox<String>> combosPoke = this.listCombosPoke();
+
+        for (int i = 0; i < combosPoke.size(); i++) {
+            ComboBox<String> currentPokeCombo = combosPoke.get(i);
+
+            if (isPokemonSelected(currentPokeCombo)) {
+                List<ComboBox<String>> attackCombos = getAttackCombosForSlot(i);
+                boolean hasAtLeastOneAttack = false;
+                List<String> selectedAttacks = new ArrayList<>(); // Mémoire pour les doublons
+
+                String pokemonName = currentPokeCombo.getValue();
+                String teamName = (i < 4) ? "L'équipe 1" : "L'équipe 2";
+
+                for (ComboBox<String> atkCombo : attackCombos) {
+                    if (isAttackSelected(atkCombo)) {
+                        hasAtLeastOneAttack = true;
+                        String attackName = atkCombo.getValue();
+
+                        // Appel de la petite fonction pour vérifier les doublons
+                        if (isAttackDuplicated(selectedAttacks, attackName, pokemonName, teamName)) {
+                            return false;
+                        }
+
+                        selectedAttacks.add(attackName);
+                    }
+                }
+
+                if (!hasAtLeastOneAttack) {
+                    showError("Attaques manquantes", teamName +
+                            " a un problème : le Pokémon " +
+                            pokemonName +
+                            " doit avoir au moins une attaque !");
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    private boolean isAttackDuplicated(List<String> memoryList, String attackName, String pokemonName,
+            String teamName) {
+        if (memoryList.contains(attackName)) {
+            showError("Attaque en double", teamName + " a un problème : le Pokémon " + pokemonName
+                    + " possède plusieurs fois l'attaque '" + attackName + "' !");
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Check if an v alid attack is selected
+     */
+    private boolean isAttackSelected(ComboBox<String> comboBox) {
+        String value = comboBox.getValue();
+        return value != null &&
+                !value.equals("Choisir une Attaque") &&
+                !value.trim().isEmpty();
     }
 }

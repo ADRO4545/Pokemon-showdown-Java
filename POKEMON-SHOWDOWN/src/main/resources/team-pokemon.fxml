@@ -28,6 +28,10 @@
                     <Label fx:id="nomT1P1" text="?" style="-fx-text-fill: white; -fx-font-weight: bold;" />
                     <ComboBox fx:id="comboT1P1" promptText="Choisir un Pokémon" prefWidth="150.0" onAction="#putPokemon"/>
                     <ComboBox fx:id="itemT1P1" promptText="Objet tenu" prefWidth="150.0" />
+                    <ComboBox fx:id="atk1T1P1" promptText="Atk 1" prefWidth="150"/>
+                    <ComboBox fx:id="atk2T1P1" promptText="Atk 2" prefWidth="150"/>
+                    <ComboBox fx:id="atk3T1P1" promptText="Atk 3" prefWidth="150"/>
+                    <ComboBox fx:id="atk4T1P1" promptText="Atk 4" prefWidth="150"/>
                 </VBox>
 
                 <VBox GridPane.columnIndex="1" GridPane.rowIndex="0"
@@ -37,6 +41,10 @@
                     <Label fx:id="nomT1P2" text="?" style="-fx-text-fill: white; -fx-font-weight: bold;" />
                     <ComboBox fx:id="comboT1P2" promptText="Choisir un Pokémon" prefWidth="150.0" onAction="#putPokemon" />
                     <ComboBox fx:id="itemT1P2" promptText="Objet tenu" prefWidth="150.0" />
+                    <ComboBox fx:id="atk1T1P2" promptText="Atk 1" prefWidth="150"/>
+                    <ComboBox fx:id="atk2T1P2" promptText="Atk 2" prefWidth="150"/>
+                    <ComboBox fx:id="atk3T1P2" promptText="Atk 3" prefWidth="150"/>
+                    <ComboBox fx:id="atk4T1P2" promptText="Atk 4" prefWidth="150"/>
                 </VBox>
 
                 <VBox GridPane.columnIndex="0" GridPane.rowIndex="1" alignment="CENTER"
@@ -46,6 +54,10 @@
                     <Label fx:id="nomT1P3" text="?" style="-fx-text-fill: white; -fx-font-weight: bold;" />
                     <ComboBox fx:id="comboT1P3" promptText="Choisir un Pokémon" prefWidth="150.0" onAction="#putPokemon" />
                     <ComboBox fx:id="itemT1P3" promptText="Objet tenu" prefWidth="150.0" />
+                    <ComboBox fx:id="atk1T1P3" promptText="Atk 1" prefWidth="150"/>
+                    <ComboBox fx:id="atk2T1P3" promptText="Atk 2" prefWidth="150"/>
+                    <ComboBox fx:id="atk3T1P3" promptText="Atk 3" prefWidth="150"/>
+                    <ComboBox fx:id="atk4T1P3" promptText="Atk 4" prefWidth="150"/>
                 </VBox>
 
                 <VBox GridPane.columnIndex="1" GridPane.rowIndex="1" alignment="CENTER"
@@ -55,6 +67,10 @@
                     <Label fx:id="nomT1P4" text="?" style="-fx-text-fill: white; -fx-font-weight: bold;" />
                     <ComboBox fx:id="comboT1P4" promptText="Choisir un Pokémon" prefWidth="150.0" onAction="#putPokemon" />
                     <ComboBox fx:id="itemT1P4" promptText="Objet tenu" prefWidth="150.0" />
+                    <ComboBox fx:id="atk1T1P4" promptText="Atk 1" prefWidth="150"/>
+                    <ComboBox fx:id="atk2T1P4" promptText="Atk 2" prefWidth="150"/>
+                    <ComboBox fx:id="atk3T1P4" promptText="Atk 3" prefWidth="150"/>
+                    <ComboBox fx:id="atk4T1P4" promptText="Atk 4" prefWidth="150"/>
                 </VBox>
 
             </GridPane>
@@ -73,6 +89,10 @@
                     <Label fx:id="nomT2P1" text="?" style="-fx-text-fill: white; -fx-font-weight: bold;" />
                     <ComboBox fx:id="comboT2P1" promptText="Choisir un Pokémon" prefWidth="150.0" onAction="#putPokemon" />
                     <ComboBox fx:id="itemT2P1" promptText="Objet tenu" prefWidth="150.0" />
+                    <ComboBox fx:id="atk1T2P1" promptText="Atk 1" prefWidth="150"/>
+                    <ComboBox fx:id="atk2T2P1" promptText="Atk 2" prefWidth="150"/>
+                    <ComboBox fx:id="atk3T2P1" promptText="Atk 3" prefWidth="150"/>
+                    <ComboBox fx:id="atk4T2P1" promptText="Atk 4" prefWidth="150"/>
                 </VBox>
 
                 <VBox GridPane.columnIndex="1" GridPane.rowIndex="0" alignment="CENTER"
@@ -82,6 +102,10 @@
                     <Label fx:id="nomT2P2" text="?" style="-fx-text-fill: white; -fx-font-weight: bold;" />
                     <ComboBox fx:id="comboT2P2" promptText="Choisir un Pokémon" prefWidth="150.0" onAction="#putPokemon" />
                     <ComboBox fx:id="itemT2P2" promptText="Objet tenu" prefWidth="150.0" />
+                    <ComboBox fx:id="atk1T2P2" promptText="Atk 1" prefWidth="150"/>
+                    <ComboBox fx:id="atk2T2P2" promptText="Atk 2" prefWidth="150"/>
+                    <ComboBox fx:id="atk3T2P2" promptText="Atk 3" prefWidth="150"/>
+                    <ComboBox fx:id="atk4T2P2" promptText="Atk 4" prefWidth="150"/>
                 </VBox>
 
                 <VBox GridPane.columnIndex="0" GridPane.rowIndex="1"
@@ -91,6 +115,10 @@
                     <Label fx:id="nomT2P3" text="?" style="-fx-text-fill: white; -fx-font-weight: bold;" />
                     <ComboBox fx:id="comboT2P3" promptText="Choisir un Pokémon" prefWidth="150.0" onAction="#putPokemon"/>
                     <ComboBox fx:id="itemT2P3" promptText="Objet tenu" prefWidth="150.0" />
+                    <ComboBox fx:id="atk1T2P3" promptText="Atk 1" prefWidth="150"/>
+                    <ComboBox fx:id="atk2T2P3" promptText="Atk 2" prefWidth="150"/>
+                    <ComboBox fx:id="atk3T2P3" promptText="Atk 3" prefWidth="150"/>
+                    <ComboBox fx:id="atk4T2P3" promptText="Atk 4" prefWidth="150"/>
                 </VBox>
 
                 <VBox GridPane.columnIndex="1" GridPane.rowIndex="1" alignment="CENTER"
@@ -99,6 +127,10 @@
                     <Label fx:id="nomT2P4" text="?" style="-fx-text-fill: white; -fx-font-weight: bold;" />
                     <ComboBox fx:id="comboT2P4" promptText="Choisir un Pokémon" prefWidth="150.0" onAction="#putPokemon" />
                     <ComboBox fx:id="itemT2P4" promptText="Objet tenu" prefWidth="150.0" />
+                    <ComboBox fx:id="atk1T2P4" promptText="Atk 1" prefWidth="150"/>
+                    <ComboBox fx:id="atk2T2P4" promptText="Atk 2" prefWidth="150"/>
+                    <ComboBox fx:id="atk3T2P4" promptText="Atk 3" prefWidth="150"/>
+                    <ComboBox fx:id="atk4T2P4" promptText="Atk 4" prefWidth="150"/>
                 </VBox>
 
             </GridPane>
