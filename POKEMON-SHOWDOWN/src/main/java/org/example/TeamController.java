@@ -137,6 +137,8 @@ public class TeamController {
 
     private HashMap<String, Pokemon> allPokemons;
 
+
+
     @FXML
     public void initialize() {
 
@@ -336,12 +338,51 @@ public class TeamController {
         imageView.setImage(null);
     }
 
-    public void startBattle(ActionEvent event) {
-        if (!areBothTeamsValid()) {
-            return;
-        }
+    private List<Pokemon> buildTeam(int startIndex) {
+        List<Pokemon> team = new ArrayList<>();
+        List<ComboBox<String>> combosPoke = this.listCombosPoke();
+        List<ComboBox<String>> combosItem = this.listCombosObject(); // <-- NOUVEAU : On récupère les combos d'objets
 
-        if (!areAttacksValid()) {
+        // On recrée rapidement notre petit catalogue d'objets pour pouvoir les distribuer
+        HashMap<String, Item> objectsCatalog = new HashMap<>();
+        objectsCatalog.put("Restes", new Restes());
+        objectsCatalog.put("NormalJewel", new NormalJewel());
+        objectsCatalog.put("Sunglasses", new Sunglasses());
+        objectsCatalog.put("Ball", new Ball());
+        objectsCatalog.put("BaiePrine", new BaiePrine());
+
+        for (int i = startIndex; i < startIndex + 4; i++) {
+            ComboBox<String> currentPokeCombo = combosPoke.get(i);
+
+            if (isPokemonSelected(currentPokeCombo)) {
+                String pokemonName = currentPokeCombo.getValue();
+                Pokemon basePoke = allPokemons.get(pokemonName);
+                Pokemon realPoke = new Pokemon(basePoke);
+
+                // 1. Ajout des attaques (ton code actuel)
+                List<ComboBox<String>> attackCombos = getAttackCombosForSlot(i);
+                for (ComboBox<String> atkCombo : attackCombos) {
+                    if (isAttackSelected(atkCombo)) {
+                        String atkName = atkCombo.getValue();
+                        for(Attack atk : basePoke.getListAttacks()) {
+                            if(atk.getName().equals(atkName)) {
+                                realPoke.addAttack(atk);
+                                break;
+                            }
+                        }
+                    }
+                }
+
+
+
+                team.add(realPoke);
+            }
+        }
+        return team;
+    }
+
+    public void startBattle(ActionEvent event) {
+        if (!areBothTeamsValid() || !areAttacksValid()) {
             return;
         }
 
@@ -349,17 +390,12 @@ public class TeamController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/firstchoose.fxml"));
             Parent root = loader.load();
             FirstChooseController chooseController = loader.getController();
-            List<String> playerTeam = Arrays.asList(
-                    comboT1P1.getValue(),
-                    comboT1P2.getValue(),
-                    comboT1P3.getValue(),
-                    comboT1P4.getValue());
-            List<String> enemyTeam = Arrays.asList(
-                    comboT2P1.getValue(),
-                    comboT2P2.getValue(),
-                    comboT2P3.getValue(),
-                    comboT2P4.getValue());
 
+
+            List<Pokemon> playerTeam = buildTeam(0); // 0 = index de départ pour l'équipe 1
+            List<Pokemon> enemyTeam = buildTeam(4);  // 4 = index de départ pour l'équipe 2
+
+            // On envoie les VRAIS Pokémon
             chooseController.setTeamsData(playerTeam, enemyTeam);
 
             Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -368,7 +404,6 @@ public class TeamController {
             primaryStage.show();
 
         } catch (Exception e) {
-            System.err.println("ERREUR : Impossible de charger le fichier FXML !");
             e.printStackTrace();
         }
     }
@@ -477,23 +512,35 @@ public class TeamController {
 
     private void assignRandomAttacksForSlot(int slotIndex, Random random) {
         List<ComboBox<String>> attackCombos = getAttackCombosForSlot(slotIndex);
-        List<Integer> usedIndexes = new ArrayList<>();
 
-        for (ComboBox<String> atkCombo : attackCombos) {
-            atkCombo.setDisable(true); // disable interadoto team2
+        if (attackCombos.isEmpty()) return;
 
-            List<String> availableAttacks = atkCombo.getItems();
-            if (availableAttacks.size() > 1) {
-                int randomIndex = 1 + random.nextInt(availableAttacks.size() - 1);
-                int attempts = 1;
+        // On récupère la liste des attaques disponibles (en ignorant "Choisir une Attaque" à l'index 0)
+        List<String> availableAttacks = attackCombos.get(0).getItems();
+        int nbAttaquesReelles = availableAttacks.size() - 1;
 
-                while (usedIndexes.contains(randomIndex) && attempts < 10) {
-                    randomIndex = 1 + random.nextInt(availableAttacks.size() - 1);
-                    attempts++;
-                }
+        if (nbAttaquesReelles <= 0) return;
 
-                usedIndexes.add(randomIndex);
-                atkCombo.getSelectionModel().select(randomIndex);
+        // 1. On crée un "chapeau" avec les numéros de toutes les attaques possibles (1, 2, 3...)
+        List<Integer> indexPossibles = new ArrayList<>();
+        for (int i = 1; i <= nbAttaquesReelles; i++) {
+            indexPossibles.add(i);
+        }
+
+        // 2. On secoue le chapeau pour tout mélanger
+        java.util.Collections.shuffle(indexPossibles, random);
+
+        // 3. On distribue les attaques aux 4 cases sans jamais remettre un numéro dans le chapeau
+        for (int i = 0; i < attackCombos.size(); i++) {
+            ComboBox<String> atkCombo = attackCombos.get(i);
+            atkCombo.setDisable(true); // On bloque la modification pour l'équipe 2
+
+            if (i < indexPossibles.size()) {
+                // On pioche le numéro suivant dans notre liste mélangée
+                atkCombo.getSelectionModel().select(indexPossibles.get(i));
+            } else {
+                // S'il n'y a plus de numéros dans le chapeau (le Pokémon a moins de 4 attaques)
+                atkCombo.getSelectionModel().select("Choisir une Attaque");
             }
         }
     }

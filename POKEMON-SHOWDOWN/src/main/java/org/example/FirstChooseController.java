@@ -21,12 +21,12 @@ public class FirstChooseController {
     @FXML
     private Button btnPlayer1, btnPlayer2, btnPlayer3, btnPlayer4;
 
-    private List<String> playerTeamNames;
-    private List<String> enemyTeamNames; // To keep !! to transfer enemy data to fight part
+    private List<Pokemon> playersTeam;
+    private List<Pokemon> enemiesTeam; // To keep !! to transfer enemy data to fight part
 
-    public void setTeamsData(List<String> playerNames, List<String> enemyNames) {
-        this.playerTeamNames = playerNames;
-        this.enemyTeamNames = enemyNames;
+    public void setTeamsData(List<Pokemon> playersTeam, List<Pokemon> enemiesTeam) {
+        this.playersTeam = playersTeam;
+        this.enemiesTeam = enemiesTeam;
 
         displayPlayerTeam();
     }
@@ -36,8 +36,9 @@ public class FirstChooseController {
         List<Button> playerButtons = Arrays.asList(btnPlayer1, btnPlayer2, btnPlayer3, btnPlayer4);
 
         for (int i = 0; i < 4; i++) {
-            if (i < playerTeamNames.size() && isPokemonValid(playerTeamNames.get(i))) {
-                String pokemonName = playerTeamNames.get(i);
+            if (i < playersTeam.size()) {
+
+                String pokemonName = playersTeam.get(i).getName();
                 setImage(playerImages.get(i), pokemonName);
                 playerButtons.get(i).setText(pokemonName);
             } else {
@@ -59,32 +60,24 @@ public class FirstChooseController {
         return name != null && !name.equals("Choisir un Pokemon") && !name.trim().isEmpty();
     }
 
-    @FXML
-    public void choosePokemon1(ActionEvent event) {
-        launchFight(event, 0);
-    }
+
+
 
     @FXML
-    public void choosePokemon2(ActionEvent event) {
-        launchFight(event, 1);
+    public void choosePokemon(ActionEvent event) {
+        Button boutonClique = (Button) event.getSource();
+        List<Button> listeBoutons = Arrays.asList(btnPlayer1, btnPlayer2, btnPlayer3, btnPlayer4);
+        int leadIndex = listeBoutons.indexOf(boutonClique);
+        launchFight(event, leadIndex);
     }
 
-    @FXML
-    public void choosePokemon3(ActionEvent event) {
-        launchFight(event, 2);
-    }
-
-    @FXML
-    public void choosePokemon4(ActionEvent event) {
-        launchFight(event, 3);
-    }
 
     private void launchFight(ActionEvent event, int leadIndex) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fight.fxml"));
             Parent root = loader.load();
             FightController fightController = loader.getController();
-            fightController.initData(playerTeamNames, enemyTeamNames, leadIndex);
+            fightController.initData(playersTeam, enemiesTeam, leadIndex);
             Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             primaryStage.setScene(new Scene(root));
             primaryStage.setTitle("Fight !");

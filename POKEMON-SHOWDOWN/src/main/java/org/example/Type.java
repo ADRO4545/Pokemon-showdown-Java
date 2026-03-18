@@ -20,7 +20,12 @@ public class Type {
     }
 
     public double getCoef(Type defender){
-        return this.efficiencies.get(defender.getName());
+        if (defender == null) return 1.0;
+
+        Double coef = this.efficiencies.get(defender.getName());
+        if (coef == null) return 1.0;
+
+        return coef;
     }
 
 

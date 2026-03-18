@@ -22,7 +22,7 @@
    <HBox alignment="CENTER"
      spacing="30.0"
      VBox.vgrow="ALWAYS">
-      
+
       <VBox alignment="CENTER"
        prefWidth="350.0"
        spacing="15.0"
@@ -57,6 +57,11 @@
           -fx-font-size: 16px;
           -fx-font-weight: bold;"
           text="Statut : AUCUN" />
+         <Label fx:id="itemPlayerActive"
+                style="-fx-text-fill: #c084fc;
+          -fx-font-size: 16px;
+          -fx-font-weight: bold;"
+                text="Objet : Aucun" />
       </VBox>
 
       <VBox alignment="CENTER"
@@ -93,6 +98,12 @@
           -fx-font-size: 16px;
           -fx-font-weight: bold;"
           text="Statut : AUCUN" />
+         <Label fx:id="itemEnemyActive"
+                style="-fx-text-fill: #c084fc;
+          -fx-font-size: 16px;
+          -fx-font-weight: bold;"
+                text="Objet : Aucun" />
+
       </VBox>
 
       <VBox prefWidth="350.0"
@@ -118,7 +129,7 @@
     style="-fx-background-color: #2a3256;
     -fx-background-radius: 15;
     -fx-padding: 20;">
-      
+
       <VBox alignment="CENTER" spacing="10.0">
          <Label style="-fx-text-fill: white;
           -fx-font-size: 18px;
@@ -133,7 +144,7 @@
              -fx-font-size: 18px;
              -fx-font-weight: bold;
              -fx-cursor: hand;"
-             text="Attaque 1" />
+             text="Attaque 1" onAction="#handleAttackClick"/>
             <Button fx:id="btnAtk2"
              prefHeight="60.0"
              prefWidth="220.0"
@@ -142,7 +153,7 @@
              -fx-font-size: 18px;
              -fx-font-weight: bold;
              -fx-cursor: hand;"
-             text="Attaque 2" />
+             text="Attaque 2" onAction="#handleAttackClick"/>
             <Button fx:id="btnAtk3"
              prefHeight="60.0"
              prefWidth="220.0"
@@ -151,7 +162,7 @@
              -fx-font-size: 18px;
              -fx-font-weight: bold;
              -fx-cursor: hand;"
-             text="Attaque 3" />
+             text="Attaque 3" onAction="#handleAttackClick"/>
             <Button fx:id="btnAtk4"
              prefHeight="60.0"
              prefWidth="220.0"
@@ -160,7 +171,7 @@
              -fx-font-size: 18px;
              -fx-font-weight: bold;
              -fx-cursor: hand;"
-             text="Attaque 4" />
+             text="Attaque 4" onAction="#handleAttackClick" />
          </HBox>
       </VBox>
 
@@ -178,7 +189,7 @@
              -fx-font-size: 14px;
              -fx-font-weight: bold;
              -fx-cursor: hand;"
-             text="Pokémon 1" />
+             text="Pokémon 1" onAction="#handleSwitchClick" />
             <Button fx:id="btnSwitch2"
              prefHeight="40.0"
              prefWidth="200.0"
@@ -187,7 +198,7 @@
              -fx-font-size: 14px;
              -fx-font-weight: bold;
              -fx-cursor: hand;"
-             text="Pokémon 2" />
+             text="Pokémon 2" onAction="#handleSwitchClick"/>
             <Button fx:id="btnSwitch3"
              prefHeight="40.0"
              prefWidth="200.0"
@@ -196,7 +207,7 @@
              -fx-font-size: 14px;
              -fx-font-weight: bold;
              -fx-cursor: hand;"
-             text="Pokémon 3" />
+             text="Pokémon 3" onAction="#handleSwitchClick"/>
             <Button fx:id="btnSwitch4"
              prefHeight="40.0"
              prefWidth="200.0"
@@ -205,7 +216,7 @@
              -fx-font-size: 14px;
              -fx-font-weight: bold;
              -fx-cursor: hand;"
-             text="Pokémon 4" />
+             text="Pokémon 4" onAction="#handleSwitchClick"/>
          </HBox>
       </VBox>
 

@@ -18,22 +18,22 @@
          
          <VBox alignment="CENTER" spacing="10.0">
             <ImageView fx:id="imgPlayer1" fitHeight="120.0" fitWidth="120.0" preserveRatio="true" />
-            <Button fx:id="btnPlayer1" mnemonicParsing="false" onAction="#choosePokemon1" style="-fx-background-color: #4a7af5; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;" text="Choisir" />
+            <Button fx:id="btnPlayer1" mnemonicParsing="false" onAction="#choosePokemon" style="-fx-background-color: #4a7af5; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;" text="Choisir" />
          </VBox>
 
          <VBox alignment="CENTER" spacing="10.0">
             <ImageView fx:id="imgPlayer2" fitHeight="120.0" fitWidth="120.0" preserveRatio="true" />
-            <Button fx:id="btnPlayer2" mnemonicParsing="false" onAction="#choosePokemon2" style="-fx-background-color: #4a7af5; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;" text="Choisir" />
+            <Button fx:id="btnPlayer2" mnemonicParsing="false" onAction="#choosePokemon" style="-fx-background-color: #4a7af5; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;" text="Choisir" />
          </VBox>
 
          <VBox alignment="CENTER" spacing="10.0">
             <ImageView fx:id="imgPlayer3" fitHeight="120.0" fitWidth="120.0" preserveRatio="true" />
-            <Button fx:id="btnPlayer3" mnemonicParsing="false" onAction="#choosePokemon3" style="-fx-background-color: #4a7af5; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;" text="Choisir" />
+            <Button fx:id="btnPlayer3" mnemonicParsing="false" onAction="#choosePokemon" style="-fx-background-color: #4a7af5; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;" text="Choisir" />
          </VBox>
 
          <VBox alignment="CENTER" spacing="10.0">
             <ImageView fx:id="imgPlayer4" fitHeight="120.0" fitWidth="120.0" preserveRatio="true" />
-            <Button fx:id="btnPlayer4" mnemonicParsing="false" onAction="#choosePokemon4" style="-fx-background-color: #4a7af5; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;" text="Choisir" />
+            <Button fx:id="btnPlayer4" mnemonicParsing="false" onAction="#choosePokemon" style="-fx-background-color: #4a7af5; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;" text="Choisir" />
          </VBox>
 
       </HBox>

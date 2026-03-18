@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Pokemon {
     private String name;
     private double hp;
-    private int maxHp;
+    private double maxHp;
     private int speed;
 
     private int specialAttack;
@@ -59,6 +59,26 @@ public class Pokemon {
         this.type2 = type2;
         this.status = status;
         this.item = item;
+        this.listAttacks = new ArrayList<>();
+    }
+
+    public Pokemon(Pokemon modele) {
+
+        this.name = modele.getName();
+        this.hp = modele.getHp();
+        this.maxHp = modele.getMaxHp();
+        this.speed = modele.getSpeed();
+        this.classicAttack = modele.getClassicAttack();
+        this.specialAttack = modele.getSpecialAttack();
+        this.classicDefense = modele.getClassicDefense();
+        this.specialDefense = modele.getSpecialDefense();
+        this.classicDefenseMax = modele.getClassicDefenseMax();
+        this.specialDefenseMax = modele.getSpecialDefenseMax();
+        this.type = modele.getType();
+        this.type2 = modele.getType2();
+        this.listAttacks = new ArrayList<>();
+        this.statut = null;
+        this.item = null;
     }
 
     public Pokemon(String name, double hp, int maxHp, int speed, int specialAttack,
@@ -200,6 +220,7 @@ public class Pokemon {
     public ArrayList<Attack> getListAttacks() {
         return listAttacks;
     }
+    public void addAttack(Attack attack) { this.listAttacks.add(attack); }
 
     public String toString() {
         return "Pokemon [name=" + name +
