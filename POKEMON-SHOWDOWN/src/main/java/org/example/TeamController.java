@@ -104,6 +104,7 @@ public class TeamController {
         List<ComboBox<String>> namesCombosObject = this.listCombosObject();
 
         for (ComboBox<String> cp : namesCombosPoke) {
+            cp.getItems().add("Choisir un Pokemon");
             for (Pokemon p : pokemons.values()) {
                 String nom = p.getName();
                 cp.getItems().add(nom);
@@ -112,6 +113,7 @@ public class TeamController {
         }
 
         for (ComboBox<String> co : namesCombosObject) {
+            co.getItems().add("Choisir un Objet");
             co.getItems().addAll(objectsCatalog.keySet());
             co.getSelectionModel().select("Choisir un Objet");
         }
@@ -168,7 +170,7 @@ public class TeamController {
         label.setText(pokemonName);
         String imagePath = "/images/" + pokemonName + ".png";
         var resource = getClass().getResource(imagePath);
-        
+
         if (resource != null) {
             imageView.setImage(new Image(resource.toExternalForm()));
         } else {
