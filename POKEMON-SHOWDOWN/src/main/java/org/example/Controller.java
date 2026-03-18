@@ -20,10 +20,6 @@ public class Controller {
         return DriverManager.getConnection(DB_URL, USER, PASS);
     }
 
-    /**
-     * Crée les statuts en dur (pas de table SQL pour les statuts).
-     * NONE = pas de statut actif.
-     */
     public static HashMap<String, Status> findAllStatut() {
         HashMap<String, Status> allStatus = new HashMap<>();
         allStatus.put("NONE", new Status("NONE", 0, 1.0, 1.0));
@@ -41,8 +37,6 @@ public class Controller {
                 ResultSet set = statement.executeQuery()) {
 
             while (set.next()) {
-                // Remplace les noms entre guillemets par le nom exact de tes colonnes
-                // phpMyAdmin
                 String typeAttacker = set.getString("attacker_type");
                 String typeDefender = set.getString("defender_type");
                 double coef = set.getDouble("coefficient");

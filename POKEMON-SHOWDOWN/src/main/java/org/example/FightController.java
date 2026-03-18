@@ -13,17 +13,26 @@ import java.util.List;
 
 public class FightController {
 
-    @FXML private Label namePlayerActive;
-    @FXML private Button btnAtk1, btnAtk2, btnAtk3, btnAtk4;
-    @FXML private ImageView imgPlayerActive;
-    @FXML private Label hpPlayerActive;
+    @FXML
+    private Label namePlayerActive;
+    @FXML
+    private Button btnAtk1, btnAtk2, btnAtk3, btnAtk4;
+    @FXML
+    private ImageView imgPlayerActive;
+    @FXML
+    private Label hpPlayerActive;
 
-    @FXML private ImageView imgEnemyActive;
-    @FXML private Label nameEnemyActive;
-    @FXML private Label hpEnemyActive;
+    @FXML
+    private ImageView imgEnemyActive;
+    @FXML
+    private Label nameEnemyActive;
+    @FXML
+    private Label hpEnemyActive;
 
-    @FXML private Button btnSwitch1, btnSwitch2, btnSwitch3, btnSwitch4;
-    @FXML private TextArea historyLog;
+    @FXML
+    private Button btnSwitch1, btnSwitch2, btnSwitch3, btnSwitch4;
+    @FXML
+    private TextArea historyLog;
 
     private List<Pokemon> playersTeam;
     private List<Pokemon> enemiesTeam;
@@ -62,7 +71,6 @@ public class FightController {
         }
     }
 
-    // VERSION SÉCURISÉE : On ne met à jour QUE les HP, le Nom et l'Image. Zéro risque de crash !
     private void updateVisuals(Pokemon pokemon, boolean isPlayer) {
         ImageView imgView = isPlayer ? imgPlayerActive : imgEnemyActive;
         Label nameLabel = isPlayer ? namePlayerActive : nameEnemyActive;
@@ -100,6 +108,9 @@ public class FightController {
 
     @FXML
     public void handleAttackClick(ActionEvent event) {
+
+        SoundManager.playAttackSound("sncf.wav");
+
         Button boutonClique = (Button) event.getSource();
         List<Button> atkButtons = Arrays.asList(btnAtk1, btnAtk2, btnAtk3, btnAtk4);
         int indexAttaque = atkButtons.indexOf(boutonClique);
@@ -136,7 +147,6 @@ public class FightController {
             return;
         }
 
-
         historyLog.appendText(TourManager.applyEndOfTurnItem(activePlayerPokemon));
         historyLog.appendText(TourManager.applyEndOfTurnItem(activeEnemyPokemon));
         historyLog.appendText(TourManager.applyEndOfTurnStatus(activePlayerPokemon));
@@ -154,6 +164,9 @@ public class FightController {
 
     @FXML
     public void handleSwitchClick(ActionEvent event) {
+
+        SoundManager.playAttackSound("cri.wav");
+
         Button btnClique = (Button) event.getSource();
         List<Button> switchBtns = Arrays.asList(btnSwitch1, btnSwitch2, btnSwitch3, btnSwitch4);
         int index = switchBtns.indexOf(btnClique);
@@ -201,6 +214,9 @@ public class FightController {
     }
 
     private void handleBattleEnd() {
+
+        SoundManager.playAttackSound("fusil.wav");
+
         updateVisuals(activePlayerPokemon, true);
         updateVisuals(activeEnemyPokemon, false);
         updateDeckButtons();
@@ -211,7 +227,8 @@ public class FightController {
                 disableAttacks();
                 disableSwitches();
             } else {
-                historyLog.appendText("\n" + activePlayerPokemon.getName() + " est KO ! Choisissez un autre Pokémon dans votre deck.");
+                historyLog.appendText("\n" + activePlayerPokemon.getName()
+                        + " est KO ! Choisissez un autre Pokémon dans votre deck.");
                 disableAttacks();
                 isPlayerForcedToSwitch = true;
             }
@@ -237,23 +254,30 @@ public class FightController {
 
     private boolean isTeamWipedOut(List<Pokemon> team) {
         for (Pokemon p : team) {
-            if (p.getHp() > 0) return false;
+            if (p.getHp() > 0)
+                return false;
         }
         return true;
     }
 
     private void disableAttacks() {
-        btnAtk1.setDisable(true); btnAtk2.setDisable(true);
-        btnAtk3.setDisable(true); btnAtk4.setDisable(true);
+        btnAtk1.setDisable(true);
+        btnAtk2.setDisable(true);
+        btnAtk3.setDisable(true);
+        btnAtk4.setDisable(true);
     }
 
     private void enableAttacks() {
-        btnAtk1.setDisable(false); btnAtk2.setDisable(false);
-        btnAtk3.setDisable(false); btnAtk4.setDisable(false);
+        btnAtk1.setDisable(false);
+        btnAtk2.setDisable(false);
+        btnAtk3.setDisable(false);
+        btnAtk4.setDisable(false);
     }
 
     private void disableSwitches() {
-        btnSwitch1.setDisable(true); btnSwitch2.setDisable(true);
-        btnSwitch3.setDisable(true); btnSwitch4.setDisable(true);
+        btnSwitch1.setDisable(true);
+        btnSwitch2.setDisable(true);
+        btnSwitch3.setDisable(true);
+        btnSwitch4.setDisable(true);
     }
 }

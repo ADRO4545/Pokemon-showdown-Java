@@ -12,11 +12,13 @@ public class MenuController {
 
     @FXML
     public void newWindow(ActionEvent event) {
+
+        SoundManager.playAttackSound("klaxontrain.wav");
+
         try {
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/team-pokemon.fxml"));
             Parent root = loader.load();
-
 
             Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
@@ -31,9 +33,6 @@ public class MenuController {
             e.printStackTrace();
         }
 
-
     }
-
-
 
 }

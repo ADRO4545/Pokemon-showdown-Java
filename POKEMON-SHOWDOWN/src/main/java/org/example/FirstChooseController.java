@@ -60,17 +60,15 @@ public class FirstChooseController {
         return name != null && !name.equals("Choisir un Pokemon") && !name.trim().isEmpty();
     }
 
-
-
-
     @FXML
     public void choosePokemon(ActionEvent event) {
+
+        SoundManager.playAttackSound("perenoel.wav");
         Button boutonClique = (Button) event.getSource();
         List<Button> listeBoutons = Arrays.asList(btnPlayer1, btnPlayer2, btnPlayer3, btnPlayer4);
         int leadIndex = listeBoutons.indexOf(boutonClique);
         launchFight(event, leadIndex);
     }
-
 
     private void launchFight(ActionEvent event, int leadIndex) {
         try {
