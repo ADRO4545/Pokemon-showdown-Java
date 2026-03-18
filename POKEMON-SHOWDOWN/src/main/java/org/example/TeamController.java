@@ -372,15 +372,25 @@ public class TeamController {
         }
 
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fight.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/firstchoose.fxml"));
             Parent root = loader.load();
+            FirstChooseController chooseController = loader.getController();
+            List<String> playerTeam = Arrays.asList(
+                    comboT1P1.getValue(),
+                    comboT1P2.getValue(),
+                    comboT1P3.getValue(),
+                    comboT1P4.getValue());
+            List<String> enemyTeam = Arrays.asList(
+                    comboT2P1.getValue(),
+                    comboT2P2.getValue(),
+                    comboT2P3.getValue(),
+                    comboT2P4.getValue());
+
+            chooseController.setTeamsData(playerTeam, enemyTeam);
 
             Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-            Scene scene = new Scene(root);
-
-            primaryStage.setTitle("Fight");
-            primaryStage.setScene(scene);
+            primaryStage.setScene(new Scene(root));
+            primaryStage.setTitle("Choix du premier Pokémon");
             primaryStage.show();
 
         } catch (Exception e) {
