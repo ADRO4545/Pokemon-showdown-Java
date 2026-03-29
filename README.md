@@ -70,7 +70,7 @@ mvn javafx:run
    </thead>
    <tbody>
         <tr>            
-            <td align="center"><img src="https://skillicons.dev/icons?i=javaFX" /></td>
+            <td align="center"><img src="https://upload.wikimedia.org/wikipedia/fr/a/a2/JavaFX_Logo.png" width="50" alt="JavaFX" /></td>
             <td align="center"><img src="https://skillicons.dev/icons?i=java" /></td>            
             <td align="center"><img src="https://skillicons.dev/icons?i=mysql" /></td>            
         </tr>     
@@ -90,23 +90,23 @@ Il applique les notions vues au cours de nos 3 semaines de cours sur le langage 
 ### Répartition des tâches dans le Groupe
 
 [**Arthur DRUGEAULT**](https://github.com/ADRO4545):
-Gestion des Pokemons
-Gestion des statuts des Pokemons
-Gestion du choix de l'ordre de jeu des pokemons pendant le combat
-Interface visuel du choix des pokemons de l'équipe
-Interface visuel du choix du pokemon qui débute le combat
-Interface visuel du combat
-Effets sonores et visuels
+- Gestion des Pokemons
+- Gestion des statuts des Pokemons
+- Gestion du choix de l'ordre de jeu des pokemons pendant le combat
+- Interface visuel du choix des pokemons de l'équipe
+- Interface visuel du choix du pokemon qui débute le combat
+- Interface visuel du combat
+- Effets sonores et visuels
 
 
 [**Pierre SOREAU**](https://github.com/PierreSoreau):  
-Gestion des Types des Pokemons
-Gestion des Effets des Attaques
-Gestion des Objets des Pokemons
-Gestion des Pokemons
-Interface visuel du choix des pokemons de l'équipe
-Interface visuel du combat
-Création des bases de données et leur lien avec le jeu
+- Gestion des Types des Pokemons
+- Gestion des Effets des Attaques
+- Gestion des Objets des Pokemons
+- Gestion des Pokemons
+- Interface visuel du choix des pokemons de l'équipe
+- Interface visuel du combat
+- Création des bases de données et leur lien avec le jeu
 
 
 ## 🧠 Difficultées rencontrées
