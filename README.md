@@ -3,9 +3,9 @@
 
 # Pokemon Showdown
 
-Ce projet est un simulateur de combat Pokémon au tour par tour développé en Java avec l'interface graphique JavaFX. Réalisé dans le cadre du module de Programmation Orientée Objet de la 1ère année à Coda (2026) , il s'inspire grandement de l'interface de Pokémon Showdown. 
-
-L'objectif principal est de modéliser les mécaniques complexes des combats Pokémon en appliquant rigoureusement les concepts de la Programmation Orientée Objet (POO).Le joueur doit pouvoir constituer une équipe et affronter un adversaire contrôlé par l'ordinateur.
+* Ce projet est un simulateur de combat Pokémon au tour par tour développé en **Java** avec l'interface graphique **JavaFX**. Il a été réalisé dans le cadre du module Java de 1ère année à l'école Coda. Il s'inspire grandement de l'interface de Pokémon Showdown. 
+* L'objectif principal est de modéliser les mécaniques complexes des combats Pokémon en appliquant rigoureusement les concepts de la **Programmation Orientée Objet (POO)**.
+* Le joueur doit pouvoir constituer une équipe et affronter un adversaire contrôlé par l'ordinateur.
 
 ## Fonctionnalités Clés du jeu
 
