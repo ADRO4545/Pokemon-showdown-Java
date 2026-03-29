@@ -70,7 +70,7 @@ mvn javafx:run
    </thead>
    <tbody>
         <tr>            
-            <td align="center"><img src="https://upload.wikimedia.org/wikipedia/fr/a/a2/JavaFX_Logo.png" width="50" alt="JavaFX" /></td>
+            <td align="center"><img src="https://upload.wikimedia.org/wikipedia/en/c/cc/JavaFX_Logo.png" width="50" alt="JavaFX" /></td>
             <td align="center"><img src="https://skillicons.dev/icons?i=java" /></td>            
             <td align="center"><img src="https://skillicons.dev/icons?i=mysql" /></td>            
         </tr>     
